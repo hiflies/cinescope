@@ -1,29 +1,20 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">CineScope</a>
+﻿<nav class="fixed top-0 w-full z-50 bg-surface/0 transition-all duration-500 border-b border-transparent flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4" id="top-nav">
+    <div class="flex items-center gap-xl">
+        <span class="font-display-lg-mobile md:text-headline-lg font-bold text-primary-container tracking-tight">CineScope</span>
+        <div class="hidden md:flex gap-lg items-center">
+            <NavLink class="text-primary-container font-bold border-b-2 border-primary-container pb-1 font-body-md text-body-md" href="" Match="NavLinkMatch.All">Movies</NavLink>
+            <NavLink class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" href="#">TV Shows</NavLink>
+            <NavLink class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" href="#">My List</NavLink>
+            <NavLink class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" href="#">New &amp; Popular</NavLink>
+        </div>
     </div>
-</div>
-
-<input type="checkbox" title="Navigation menu" class="navbar-toggler"/>
-
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="nav flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
+    <div class="flex items-center gap-base">
+        <div class="hidden sm:flex relative items-center">
+            <span class="material-symbols-outlined absolute left-3 text-on-surface-variant">search</span>
+            <input class="bg-surface-container-high border-none rounded-full pl-10 pr-4 py-2 text-label-md focus:ring-1 focus:ring-primary-container w-64" placeholder="Search movies..." type="text"/>
         </div>
+        <button class="bg-secondary-container text-on-secondary-container px-xl py-base rounded-full font-label-md hover:opacity-90 transition-all">Login</button>
+    </div>
+</nav>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-    </nav>
-</div>
+<script src="@Assets["Components/Layout/NavMenu.razor.js"]"></script>

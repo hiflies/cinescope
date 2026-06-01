@@ -1,0 +1,195 @@
+﻿@page "/search"
+
+<PageTitle>CineScope - Search Results</PageTitle>
+
+<div class="flex flex-1 pt-24 pb-xl px-margin-desktop gap-gutter">
+    
+    <aside class="hidden md:flex flex-col w-64 shrink-0 glass-surface rounded-xl p-lg sticky top-24 h-fit">
+        <div class="mb-lg">
+            <h2 class="font-headline-md text-headline-md text-primary mb-xs">Filters</h2>
+            <p class="font-label-sm text-label-sm text-on-surface-variant">Refine your search</p>
+        </div>
+        <div class="space-y-xl">
+            
+            <div>
+                <span class="font-label-md text-label-md text-on-surface block mb-md">Genre</span>
+                <div class="grid grid-cols-1 gap-sm">
+                    <label class="flex items-center gap-sm cursor-pointer group">
+                        <input checked="" class="rounded border-outline-variant bg-surface-container text-primary-container focus:ring-primary-container" type="checkbox">
+                        <span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Sci-Fi</span>
+                    </label>
+                    <label class="flex items-center gap-sm cursor-pointer group">
+                        <input class="rounded border-outline-variant bg-surface-container text-primary-container focus:ring-primary-container" type="checkbox">
+                        <span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Action</span>
+                    </label>
+                    <label class="flex items-center gap-sm cursor-pointer group">
+                        <input class="rounded border-outline-variant bg-surface-container text-primary-container focus:ring-primary-container" type="checkbox">
+                        <span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Drama</span>
+                    </label>
+                    <label class="flex items-center gap-sm cursor-pointer group">
+                        <input class="rounded border-outline-variant bg-surface-container text-primary-container focus:ring-primary-container" type="checkbox">
+                        <span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Thriller</span>
+                    </label>
+                    <label class="flex items-center gap-sm cursor-pointer group">
+                        <input class="rounded border-outline-variant bg-surface-container text-primary-container focus:ring-primary-container" type="checkbox">
+                        <span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Comedy</span>
+                    </label>
+                    <label class="flex items-center gap-sm cursor-pointer group">
+                        <input class="rounded border-outline-variant bg-surface-container text-primary-container focus:ring-primary-container" type="checkbox">
+                        <span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Horror</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div>
+                <div class="flex justify-between items-center mb-md">
+                    <span class="font-label-md text-label-md text-on-surface">Release Year</span>
+                    <span class="font-label-sm text-label-sm text-primary">2010 - 2024</span>
+                </div>
+                <input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer range-slider" max="2024" min="1990" step="1" type="range">
+            </div>
+            
+            <div>
+                <div class="flex justify-between items-center mb-md">
+                    <span class="font-label-md text-label-md text-on-surface">Min. Rating</span>
+                    <span class="font-label-sm text-label-sm text-primary">8.0+</span>
+                </div>
+                <input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer range-slider" max="10" min="0" step="0.5" type="range" value="8">
+            </div>
+            
+            <div>
+                <span class="font-label-md text-label-md text-on-surface block mb-md">Sort By</span>
+                <select class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm text-body-md focus:outline-none focus:border-primary-container">
+                    <option>Popularity</option>
+                    <option>Newest</option>
+                    <option selected="">Rating</option>
+                </select>
+            </div>
+        </div>
+        <button class="mt-xl w-full bg-secondary-container text-on-secondary-container py-md rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">Apply Filters</button>
+        <div class="mt-auto pt-xl border-t border-outline-variant flex flex-col gap-sm">
+            <a class="flex items-center gap-sm text-on-surface-variant hover:text-primary transition-colors" href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-md">Settings</span>
+            </a>
+            <a class="flex items-center gap-sm text-on-surface-variant hover:text-primary transition-colors" href="#">
+                <span class="material-symbols-outlined">help</span>
+                <span class="font-label-md">Help</span>
+            </a>
+        </div>
+    </aside>
+    
+    <main class="flex-1">
+        <header class="mb-xl">
+            <h1 class="font-headline-lg text-headline-lg text-on-surface mb-md">Results for <span class="text-primary">'Sci-Fi'</span></h1>
+            <div class="flex flex-wrap gap-sm items-center">
+                <div class="flex items-center gap-xs px-md py-1 bg-surface-variant border border-outline-variant rounded-full group cursor-pointer">
+                    <span class="font-label-sm text-label-sm text-on-surface">Genre: Sci-Fi</span>
+                    <span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-error transition-colors">close</span>
+                </div>
+                <div class="flex items-center gap-xs px-md py-1 bg-surface-variant border border-outline-variant rounded-full group cursor-pointer">
+                    <span class="font-label-sm text-label-sm text-on-surface">Rating: 8.0+</span>
+                    <span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-error transition-colors">close</span>
+                </div>
+                <button class="font-label-sm text-label-sm text-primary hover:underline ml-md">Clear all</button>
+            </div>
+        </header>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+            
+            <div class="group relative flex flex-col glass-surface rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
+                <div class="aspect-[2/3] relative overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A cinematic movie poster for Inception featuring surreal architectural landscapes bending in the sky over a modern city. The lighting is dramatic with deep blacks and high-contrast gold highlights. The visual style is polished, hyper-realistic, and evokes a sense of deep mystery and technological sophistication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAQhKMB3iXzrJOijgS_NBVHPGzuwDc-LuOpG-7khqMGYxZdYR7FBHRugUyPFayLVjVV6HzecO9IcF9_XB_asYmAH9XSIBiKEvpWoD10Oplofuggon0H_i2jQDFo_t0Mkr2FUqfcM6l2mbe2qYceRfWFPkM7q5ARrk6vYF-dkeyMwgt64O-Vdpbzoq11sQtsp_3_fFu2tnCmlfOpPzsjbTnVJi_oAaC6PaLZ3tK1iuqrTtCU7oaZB8zM5gWrftQzPZRe6gU-Mukwck">
+                    <div class="absolute top-md right-md px-sm py-1 bg-primary-container/90 backdrop-blur-md rounded-lg flex items-center gap-xs shadow-xl">
+                        <span class="material-symbols-outlined text-[14px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="font-label-md text-label-md text-on-primary-container">8.8</span>
+                    </div>
+                </div>
+                <div class="p-md flex flex-col gap-xs">
+                    <h3 class="font-title-lg text-title-lg text-on-surface group-hover:text-primary transition-colors">Inception</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-body-md text-body-md text-on-surface-variant">2010</span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant px-2 py-0.5 bg-surface-container rounded">Sci-Fi</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="group relative flex flex-col glass-surface rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
+                <div class="aspect-[2/3] relative overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A grand space exploration movie poster for Interstellar showcasing a lone astronaut standing on an alien water planet with massive, towering waves in the distance. The lighting is atmospheric and cool-toned with glowing celestial elements and stars. The overall mood is epic, lonely, and emotionally profound, utilizing a premium dark cinematic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-K9-X8XzbWFCYuvdCl4xRkHwW5hRLd_G07K84sXtw9pV70ocEfdXET1oZWeYCKXMQ0gKQUfV6ls4cgUDOFs33mS6hNhtSFY-NILt6bxRnLqLqejsBaFWAUJg7C-7viaFWI32KqIBxPQBPnpqzJKrJ-ryFRu-pMeex7zyNuLjd2dApK-WD0v8sdJcrgvReszD08o3-iPPPcdQu9STzd94Ba1QpesuhjxB5Fd1bR2677cQZkKOQxzMF7InXYL9Ec5osQn0miwC0ZKY">
+                    <div class="absolute top-md right-md px-sm py-1 bg-primary-container/90 backdrop-blur-md rounded-lg flex items-center gap-xs shadow-xl">
+                        <span class="material-symbols-outlined text-[14px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="font-label-md text-label-md text-on-primary-container">8.7</span>
+                    </div>
+                </div>
+                <div class="p-md flex flex-col gap-xs">
+                    <h3 class="font-title-lg text-title-lg text-on-surface group-hover:text-primary transition-colors">Interstellar</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-body-md text-body-md text-on-surface-variant">2014</span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant px-2 py-0.5 bg-surface-container rounded">Sci-Fi</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="group relative flex flex-col glass-surface rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
+                <div class="aspect-[2/3] relative overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A gritty, dark urban movie poster for The Dark Knight featuring a shadowed city street at night with glowing embers and smoke. The composition is dramatic and intense, focusing on a silhouette against a backdrop of chaotic blue and gold lighting. The visual style is premium corporate noir with high-end texture and cinematic depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArbCDtloUsssuqYProRMHJ8_Fpgn0UgbzN4lN21CQLZ8TL448-GjHquvDV9n1T1fJgSQEs0PnLvkncP4_DZATAnN7SUzjuizbzWqfmF4cVwVyY6MwN1IINp0GHLmgQCfJlEw95D5NdaklRrIXfuLJraw8cBrlqpLLSK-FmY06BZ6e8sGT2sVeSe8CooMPSO6TMpfgYNHebLktbYtuuyIspqK6RGQCHFw2DeU7zA_u8r3U0tiA-B8bab5lA9xBAd9ogx5iN_FXqepg">
+                    <div class="absolute top-md right-md px-sm py-1 bg-primary-container/90 backdrop-blur-md rounded-lg flex items-center gap-xs shadow-xl">
+                        <span class="material-symbols-outlined text-[14px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="font-label-md text-label-md text-on-primary-container">9.0</span>
+                    </div>
+                </div>
+                <div class="p-md flex flex-col gap-xs">
+                    <h3 class="font-title-lg text-title-lg text-on-surface group-hover:text-primary transition-colors">The Dark Knight</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-body-md text-body-md text-on-surface-variant">2008</span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant px-2 py-0.5 bg-surface-container rounded">Action</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="group relative flex flex-col glass-surface rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
+                <div class="aspect-[2/3] relative overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A desert sci-fi movie poster for Dune: Part Two featuring a vast, orange-hued sand dune landscape under a hazy, giant sun. Silhouette of a traveler with high-tech gear standing in the foreground. The lighting is warm and immersive, emphasizing the gold and charcoal color palette of the CineScope brand. The mood is epic and adventurous." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBFsc1JNiI6G2XEgllQT4CNw6M3TbSYPqpZtccrO4E9v6gDRd-vkUrHwcf-JwxJPRO4obrrytt74AKZLqQJmglXfJUI9Mx0kn7rQVyV7By0DU3U-Tw_7vKk_BD7NKjNHszxm01vrF5Fold1F22J8XLA2zsLyCbEOcJLtqphUQjS55pHSRkEyb7FILun1RbVsJF2qGyiUCIy2-A2I4ZDCOxZ4vSIXszCtINV9mj7ek_KEUTcLeDF4-Dv7NLEa0ec8DGJOyoQ-3xeuU">
+                    <div class="absolute top-md right-md px-sm py-1 bg-primary-container/90 backdrop-blur-md rounded-lg flex items-center gap-xs shadow-xl">
+                        <span class="material-symbols-outlined text-[14px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="font-label-md text-label-md text-on-primary-container">8.9</span>
+                    </div>
+                </div>
+                <div class="p-md flex flex-col gap-xs">
+                    <h3 class="font-title-lg text-title-lg text-on-surface group-hover:text-primary transition-colors">Dune: Part Two</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-body-md text-body-md text-on-surface-variant">2024</span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant px-2 py-0.5 bg-surface-container rounded">Sci-Fi</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="group relative flex flex-col glass-surface rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
+                <div class="aspect-[2/3] relative overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A cybernetic green-coded movie poster for The Matrix featuring cascading digital rain of code in a dark, atmospheric environment. High-contrast lighting with neon green accents cutting through deep charcoal shadows. The aesthetic is futuristic and high-tech, evoking the early era of digital exploration in a modern, cinematic frame." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb7s5eJV_xxDsPD519DACW7B6-LuSyomavkw-YFZ4ZbNjpxeYRV8MJeWK_yXc-IHiYZm2nEponvqw6IAW_Y77ke-Blz1p1dci0wRHbsFq50dD1V8kwHcA3aXRIFb_bdN_M8vpR8Zqw8AqCIZTfGgqxLPhj7wO9b91qMDmlzfC_bzxhUQox5juPjrG1jcizu-GqKLSqfyJWKW6nSttADFaWKIdPi06-pAPXUJnqlGmRW9hpsO2cft8SA0xydgeCR1jy1SxwH6ulSzg">
+                    <div class="absolute top-md right-md px-sm py-1 bg-primary-container/90 backdrop-blur-md rounded-lg flex items-center gap-xs shadow-xl">
+                        <span class="material-symbols-outlined text-[14px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="font-label-md text-label-md text-on-primary-container">8.7</span>
+                    </div>
+                </div>
+                <div class="p-md flex flex-col gap-xs">
+                    <h3 class="font-title-lg text-title-lg text-on-surface group-hover:text-primary transition-colors">The Matrix</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-body-md text-body-md text-on-surface-variant">1999</span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant px-2 py-0.5 bg-surface-container rounded">Sci-Fi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-xl flex justify-center">
+            <button class="bg-surface-container border border-outline-variant text-on-surface px-xl py-md rounded-full font-label-md text-label-md hover:bg-surface-variant transition-colors flex items-center gap-sm">
+                Load More Results
+                <span class="material-symbols-outlined">expand_more</span>
+            </button>
+        </div>
+    </main>
+</div>
+
+<script src="@Assets["Components/Pages/Search.razor.js"]"></script>

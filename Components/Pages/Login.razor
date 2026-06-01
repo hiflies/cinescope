@@ -1,0 +1,93 @@
+﻿@page "/login"
+
+<PageTitle>CineScope - Sign In</PageTitle>
+
+<main class="flex-grow flex items-center justify-center relative pt-20 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img alt="Cinematic background" class="w-full h-full object-cover opacity-40" data-alt="A dramatic wide shot of an empty, high-end classic cinema theater with plush deep red velvet seats. A powerful projector beam cuts through the misty, dark atmosphere from the back, creating a striking contrast with the shadowy surroundings. The lighting is moody and theatrical, emphasizing a premium cinematic experience with deep charcoal and golden light accents. The overall aesthetic is immersive, professional, and captures the magic of traditional film projection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuxavAYi9Ihnymo3qLfItKgjjuxxXKMTOIucPz7NZSv-gv7rhrl04T06WpMuqbOB_4bIvbMxss2CMdnVkuCNhC9iH7y6vlZT9GCz_DndyEP2SuTrWZatCeLnCtTUWrjeR-BTCxb6b-aFasplllsQ7A5aSvlPYwymRc0BWGRB6zP34n-M1SDeMBdf4ACX1V_afS1AOSP4HCw-M4PSsrM1Lkkwe46JpP37xwbInwbxMySiPLxTV1IeKuf9TppBF4FVqbBQvO3HNiMPI"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background opacity-90"></div>
+    </div>
+    <div class="relative z-10 w-full max-w-md px-margin-mobile">
+        <div class="glass-card rounded-xl p-xl shadow-2xl transition-auth">
+            <div class="flex flex-col items-center mb-xl">
+                <h1 class="font-headline-lg text-headline-lg mb-xs text-on-surface" id="auth-title">Welcome Back</h1>
+                <p class="text-on-surface-variant font-body-md text-center" id="auth-subtitle">Enter your details to access your cinematic universe.</p>
+            </div>
+            <form class="space-y-lg" id="auth-form">
+                <div class="space-y-xs">
+                    <label class="font-label-md text-on-surface-variant block" for="identifier">Email or Username</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">alternate_email</span>
+                        <input class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors" id="identifier" name="identifier" placeholder="name@example.com" required="" type="text"/>
+                    </div>
+                </div>
+                <div class="space-y-xs">
+                    <div class="flex justify-between items-center">
+                        <label class="font-label-md text-on-surface-variant" for="password">Password</label>
+                        <a class="text-primary font-label-sm hover:underline" href="#" id="forgot-password">Forgot Password?</a>
+                    </div>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">lock</span>
+                        <input class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+                        <button class="absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" type="button">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="space-y-xs hidden" id="confirm-password-container">
+                    <label class="font-label-md text-on-surface-variant" for="confirm-password">Confirm Password</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">verified_user</span>
+                        <input class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors" id="confirm-password" name="confirm-password" placeholder="••••••••" type="password"/>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-sm" id="remember-me-container">
+                    <input class="w-4 h-4 rounded border-outline-variant bg-surface-container text-primary-container focus:ring-primary-container focus:ring-offset-background" id="remember" type="checkbox"/>
+                    <label class="font-label-md text-on-surface-variant" for="remember">Keep me logged in</label>
+                </div>
+                
+                <button class="w-full bg-secondary-container text-on-secondary-container font-label-md py-md rounded-lg hover:brightness-110 active:scale-[0.98] transition-all flex justify-center items-center gap-sm" id="submit-btn" type="submit">
+                    <span>Sign In</span>
+                    <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+                </button>
+            </form>
+            
+            <div class="relative my-xl">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-surface-variant"></div>
+                </div>
+                <div class="relative flex justify-center text-label-sm">
+                    <span class="bg-[#1A1A1A] px-md text-on-surface-variant">Or continue with</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-md">
+                <button class="flex items-center justify-center gap-sm bg-surface-container border border-surface-variant py-sm rounded-lg hover:bg-surface-container-high transition-colors active:scale-95">
+                    <svg class="w-5 h-5" viewbox="0 0 24 24">
+                        <path d="M12 5c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.68 14.91 1 12 1 7.48 1 3.61 3.7 1.86 7.58l3.62 2.81C6.31 7.21 8.95 5 12 5z" fill="#EA4335"></path>
+                        <path d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58l3.7 2.88c2.16-1.99 3.42-4.93 3.42-8.7z" fill="#4285F4"></path>
+                        <path d="M5.48 14.79l-3.62 2.81C3.61 21.48 7.48 24 12 24c2.91 0 5.35-.96 7.13-2.61l-3.7-2.88c-.99.66-2.26 1.05-3.43 1.05-3.05 0-5.69-2.21-6.52-5.38z" fill="#FBBC05"></path>
+                        <path d="M12 19.56c-2.43 0-4.51-1.31-5.61-3.26l-3.62 2.81C4.46 21.6 8 24 12 24c4.01 0 7.54-2.4 9.13-5.89l-3.7-2.88c-.58 1.15-1.57 2.09-2.73 2.73-1.07.57-2.31.87-3.7.87z" fill="#34A853"></path>
+                    </svg>
+                    <span class="font-label-sm text-on-surface">Google</span>
+                </button>
+                <button class="flex items-center justify-center gap-sm bg-surface-container border border-surface-variant py-sm rounded-lg hover:bg-surface-container-high transition-colors active:scale-95">
+                    <svg class="w-5 h-5" fill="white" viewbox="0 0 24 24">
+                        <path d="M12.152 6.896c-.548 0-1.411-.516-1.411-1.29 0-.775.863-1.328 1.411-1.328.548 0 1.411.553 1.411 1.328 0 .774-.863 1.29-1.411 1.29zm.643 8.033c0 .17-.033.303-.099.4-.066.096-.15.143-.25.143-.101 0-.184-.047-.25-.143-.066-.097-.099-.23-.099-.4v-2.12c0-.169.033-.301.099-.398.066-.097.15-.145.25-.145.1 0 .184.048.25.145.066.097.099.229.099.398v2.12zm-3.155-2.12c0-.169.033-.301.099-.398.066-.097.15-.145.251-.145.1 0 .184.048.25.145.066.097.099.229.099.398v2.12c0 .17-.033.303-.099.4-.066.096-.15.143-.25.143-.101 0-.185-.047-.251-.143-.066-.097-.099-.23-.099-.4v-2.12zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                    </svg>
+                    <span class="font-label-sm text-on-surface">Apple</span>
+                </button>
+            </div>
+            
+            <div class="mt-xl text-center">
+                <p class="text-on-surface-variant font-body-md" id="toggle-text">
+                    Don't have an account?
+                    <button class="text-primary font-bold hover:underline" id="auth-toggle">Create Account</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="@Assets["Components/Pages/Login.razor.js"]"></script>
