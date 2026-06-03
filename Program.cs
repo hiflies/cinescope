@@ -1,10 +1,20 @@
 using CineScope.Components;
+using CineScope.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<CineScopeDbContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services
+    .AddScoped<MovieRepository, MovieRepository>()
+    .AddScoped<GenreRepository, GenreRepository>()
+    ;
 
 var app = builder.Build();
 

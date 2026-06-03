@@ -1,0 +1,71 @@
+@using CineScope.Utils
+<div class="flex items-center justify-between p-lg bg-surface-container border-t border-outline-variant">
+    <span class="text-label-md text-on-surface-variant">Showing @From to @To of @Count.ToCountString() movies</span>
+    <div class="flex items-center gap-xs">
+        @if (Page != 1)
+        {
+            <NavLink
+                href="@UrlTemplate.Replace("{page}", (Page - 1).ToString())"
+                class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-highest transition-colors disabled:opacity-50"
+                disabled="">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </NavLink>
+        }
+        <NavLink
+            href="@UrlTemplate.Replace("{page}", "1")"
+            class="@("w-10 h-10 flex items-center justify-center rounded-lg " + (Page == 1 ? "bg-primary-container text-on-primary font-bold" : "border border-outline-variant text-on-surface-variant hover:bg-surface-container-highest transition-colors"))">
+            1
+        </NavLink>
+        @if (RenderLeftDots)
+        {
+            <span class="px-sm text-on-surface-variant">...</span>
+        }
+        @for (var i = PaginationStart; i <= PaginationEnd; i++)
+        {
+            var pageNumber = i;
+            <NavLink
+                href="@UrlTemplate.Replace("{page}", pageNumber.ToString())"
+                class="@("w-10 h-10 flex items-center justify-center rounded-lg " + (pageNumber == Page ? "bg-primary-container text-on-primary font-bold" : "border border-outline-variant text-on-surface-variant hover:bg-surface-container-highest transition-colors"))">
+                @pageNumber
+            </NavLink>
+        }
+        @if (RenderRightDots)
+        {
+            <span class="px-sm text-on-surface-variant">...</span>
+        }
+        @if (PageCount != 1)
+        {
+            <NavLink
+                href="@UrlTemplate.Replace("{page}", PageCount.ToString())"
+                class="@("w-10 h-10 flex items-center justify-center rounded-lg " + (Page == PageCount ? "bg-primary-container text-on-primary font-bold" : "border border-outline-variant text-on-surface-variant hover:bg-surface-container-highest transition-colors"))">
+                @PageCount
+            </NavLink>
+        }
+        @if (Page != PageCount)
+        {
+            <NavLink
+                href="@UrlTemplate.Replace("{page}", (Page + 1).ToString())"
+                class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </NavLink>
+        }
+    </div>
+</div>
+
+@code {
+
+    [Parameter] public int Page { get; set; }
+    [Parameter] public int Size { get; set; }
+    [Parameter] public int Count { get; set; }
+    [Parameter] public string UrlTemplate { get; set; }
+
+    private int From => Math.Max((Page - 1) * Size + 1, 1);
+    private int To => Math.Min(Page * Size, Count);
+    private int PageCount => (int)Math.Ceiling(Count / (double)Size);
+
+    private bool RenderLeftDots => PageCount > 9 && Page >= 5;
+    private bool RenderRightDots => PageCount > 9 && Page <= PageCount - 4;
+
+    private int PaginationStart => PageCount > 9 && Page >= 5 ? Page - 2 : 2;
+    private int PaginationEnd => PageCount > 9 && Page <= PageCount - 4 ? Page + 2 : PageCount - 1;
+}
