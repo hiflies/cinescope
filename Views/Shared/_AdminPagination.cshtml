@@ -1,0 +1,47 @@
+@model PaginationModel
+<div class="flex items-center justify-between p-lg bg-surface-container border-t border-outline-variant">
+    <span class="text-label-md text-on-surface-variant">Showing @Model.From to @Model.To of @Model.Count.ToCountString() movies</span>
+    <div class="flex items-center gap-xs">
+        @if (Model.Page != 1)
+        {
+            <a href="@Model.UrlTemplate.Replace("{page}", (Model.Page - 1).ToString())"
+               class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </a>
+        }
+        <a href="@Model.UrlTemplate.Replace("{page}", "1")"
+           class="@("w-10 h-10 flex items-center justify-center rounded-lg " + (Model.Page == 1 ? "bg-primary-container text-on-primary font-bold" : "border border-outline-variant text-on-surface-variant hover:bg-surface-container-highest transition-colors"))">
+            1
+        </a>
+        @if (Model.RenderLeftDots)
+        {
+            <span class="px-sm text-on-surface-variant">...</span>
+        }
+        @for (var i = Model.PaginationStart; i <= Model.PaginationEnd; i++)
+        {
+            var pageNumber = i;
+            <a href="@Model.UrlTemplate.Replace("{page}", pageNumber.ToString())"
+               class="@("w-10 h-10 flex items-center justify-center rounded-lg " + (pageNumber == Model.Page ? "bg-primary-container text-on-primary font-bold" : "border border-outline-variant text-on-surface-variant hover:bg-surface-container-highest transition-colors"))">
+                @pageNumber
+            </a>
+        }
+        @if (Model.RenderRightDots)
+        {
+            <span class="px-sm text-on-surface-variant">...</span>
+        }
+        @if (Model.PageCount != 1)
+        {
+            <a href="@Model.UrlTemplate.Replace("{page}", Model.PageCount.ToString())"
+               class="@("w-10 h-10 flex items-center justify-center rounded-lg " + (Model.Page == Model.PageCount ? "bg-primary-container text-on-primary font-bold" : "border border-outline-variant text-on-surface-variant hover:bg-surface-container-highest transition-colors"))">
+                @Model.PageCount
+            </a>
+        }
+        @if (Model.Page != Model.PageCount)
+        {
+            <a href="@Model.UrlTemplate.Replace("{page}", (Model.Page + 1).ToString())"
+               class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </a>
+        }
+    </div>
+</div>

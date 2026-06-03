@@ -1,0 +1,92 @@
+@{
+    ViewData["Title"] = "CineScope - Admin - Movies";
+    Layout = "_AdminLayout";
+    var movies = (List<Movie>)ViewBag.Movies;
+    int movieCount = ViewBag.MovieCount;
+    int page = ViewBag.Page;
+    int size = ViewBag.Size;
+}
+
+<div class="movie-management flex justify-between items-end">
+    <div>
+        <h2 class="font-headline-lg text-headline-lg text-on-surface">Movie Library</h2>
+        <p class="text-body-md text-on-surface-variant">Manage your catalog of @movieCount.ToCountString() cinematic masterpieces.</p>
+    </div>
+    <a href="/admin/movies/add"
+       class="flex items-center gap-md bg-secondary-container text-on-secondary-container font-bold px-lg py-sm rounded-lg hover:scale-105 active:scale-95 transition-all duration-300">
+        <span class="material-symbols-outlined">add</span>
+        New Entry
+    </a>
+</div>
+
+<div class="movie-management glass-card rounded-xl overflow-hidden">
+    <table class="w-full text-left border-collapse">
+        <thead>
+        <tr class="bg-surface-container border-b border-outline-variant text-label-md text-on-surface-variant">
+            <th class="p-lg">Poster</th>
+            <th class="p-lg">Title</th>
+            <th class="p-lg">Genre</th>
+            <th class="p-lg">Release Year</th>
+            <th class="p-lg">Duration</th>
+            <th class="p-lg">Age Rating</th>
+            <th class="p-lg text-right">Actions</th>
+        </tr>
+        </thead>
+        <tbody class="text-body-md text-on-surface">
+        @foreach (var movie in movies)
+        {
+            <tr class="movie-row border-b border-outline-variant transition-colors group">
+                <td class="px-lg py-md">
+                    <div class="w-12 h-16 rounded overflow-hidden border border-outline-variant group-hover:scale-110 transition-transform">
+                        <img class="w-full h-full object-cover" src="@movie.PosterUrl" />
+                    </div>
+                </td>
+                <td class="px-lg py-md font-bold text-on-surface">@movie.Title</td>
+                <td class="px-lg py-md flex gap-1">
+                    @foreach (var genre in movie.Genres)
+                    {
+                        <span class="bg-surface-container-highest px-sm py-xs rounded text-label-sm">@genre.Name</span>
+                    }
+                </td>
+                <td class="px-lg py-md text-on-surface-variant">@movie.ReleaseYear</td>
+                <td class="px-lg py-md text-on-surface-variant">@movie.Duration.ToTimeString()</td>
+                <td class="px-lg py-md text-on-surface-variant">@movie.AgeRating</td>
+                <td class="px-lg py-md text-right">
+                    <div class="flex justify-end gap-md">
+                        <a href="/admin/movies/@movie.Id"
+                           class="text-on-surface-variant hover:text-primary-container transition-colors">
+                            <span class="material-symbols-outlined">edit</span>
+                        </a>
+                        <form method="post" action="/admin/movies/delete/@movie.Id"
+                              onsubmit="return confirm('Are you sure you want to delete this movie?');"
+                              style="display:inline">
+                            <button type="submit"
+                                    class="text-on-surface-variant hover:text-secondary-container transition-colors">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </form>
+                        <a href="/movies/@movie.Id"
+                           class="text-on-surface-variant hover:text-primary-container transition-colors">
+                            <span class="material-symbols-outlined">info</span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    @{
+        var paginationModel = new PaginationModel
+        {
+            Page = page,
+            Size = size,
+            Count = movieCount,
+            UrlTemplate = "/admin/movies?page={page}"
+        };
+    }
+    <partial name="_AdminPagination" model="paginationModel" />
+</div>
+
+@section Scripts {
+    <script src="~/js/admin-movie-management.js"></script>
+}

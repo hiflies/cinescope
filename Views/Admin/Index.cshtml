@@ -1,0 +1,179 @@
+@{
+    ViewData["Title"] = "CineScope - Admin - Dashboard";
+    Layout = "_AdminLayout";
+}
+
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+    <div class="glass-card p-lg rounded-xl transition-transform duration-300 hover:scale-[1.02]">
+        <div class="flex justify-between items-start mb-md">
+<span class="p-sm bg-primary-container/20 text-primary-container rounded-lg">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</span>
+            <span class="text-primary font-label-md">+4.5%</span>
+        </div>
+        <p class="font-label-md text-label-md text-on-surface-variant mb-xs">Total Revenue</p>
+        <h3 class="font-headline-md text-headline-md font-bold">$1.2M</h3>
+    </div>
+    <div class="glass-card p-lg rounded-xl transition-transform duration-300 hover:scale-[1.02]">
+        <div class="flex justify-between items-start mb-md">
+<span class="p-sm bg-tertiary-container/20 text-tertiary-container rounded-lg">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</span>
+            <span class="text-tertiary font-label-md">+2.1k</span>
+        </div>
+        <p class="font-label-md text-label-md text-on-surface-variant mb-xs">Active Users</p>
+        <h3 class="font-headline-md text-headline-md font-bold">45.2k</h3>
+    </div>
+    <div class="glass-card p-lg rounded-xl transition-transform duration-300 hover:scale-[1.02]">
+        <div class="flex justify-between items-start mb-md">
+<span class="p-sm bg-secondary-container/20 text-secondary-container rounded-lg">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+</span>
+            <span class="text-secondary font-label-md">+12%</span>
+        </div>
+        <p class="font-label-md text-label-md text-on-surface-variant mb-xs">New Signups</p>
+        <h3 class="font-headline-md text-headline-md font-bold">1,842</h3>
+    </div>
+    <div class="glass-card p-lg rounded-xl transition-transform duration-300 hover:scale-[1.02]">
+        <div class="flex justify-between items-start mb-md">
+<span class="p-sm bg-surface-variant/40 text-on-surface rounded-lg">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</span>
+            <span class="text-on-surface-variant font-label-md">Avg</span>
+        </div>
+        <p class="font-label-md text-label-md text-on-surface-variant mb-xs">Avg. Watch Time</p>
+        <h3 class="font-headline-md text-headline-md font-bold">4.5 hrs</h3>
+    </div>
+</section>
+
+<section class="grid grid-cols-1 xl:grid-cols-3 gap-gutter items-start">
+    <div class="xl:col-span-2 glass-card rounded-xl overflow-hidden">
+        <div class="p-lg border-b border-surface-variant flex justify-between items-center">
+            <h2 class="font-title-lg text-title-lg">Recent Movies Added</h2>
+            <button class="text-primary font-label-md hover:underline">View All</button>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left">
+                <thead class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+                <tr>
+                    <th class="px-lg py-md">Movie Title</th>
+                    <th class="px-lg py-md">Genre</th>
+                    <th class="px-lg py-md">Status</th>
+                    <th class="px-lg py-md">Date Added</th>
+                    <th class="px-lg py-md">Actions</th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-surface-variant">
+                <tr class="hover:bg-surface-container-high transition-colors">
+                    <td class="px-lg py-lg flex items-center gap-md">
+                        <div class="w-10 h-14 rounded bg-surface-variant flex-shrink-0">
+                            <img alt="Cyberpunk 2077" class="w-full h-full object-cover rounded"
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_RzgmXnIGpR0pnHQtM5WouNl2L5deZcHvsmi5Hv_F-PV-vEStq5v305QA5--YNIpx_F6LPYkgtpTGeEwSh3qAXn4Il8RoY34IC0UNXqChPli38rQAvviIrWXIWxrM7yWceWpUFNi-3qOWQor6wZGJ9JRJRgN-rPdFb8Zj6ctdldd0fEpxIZJhkKWl3xNaCiSALeaMsPKOM-Nyzi_9AwGaWwxa6wN764ZgLEgVSBIK6xONlNvG-apyIVQmQ09GmFBXTf_mB1I8Ldc" />
+                        </div>
+                        <span class="font-body-md text-body-md">Interstellar Drift</span>
+                    </td>
+                    <td class="px-lg py-lg font-body-md text-body-md">Sci-Fi</td>
+                    <td class="px-lg py-lg">
+                        <span class="px-sm py-xs bg-green-500/10 text-green-500 rounded text-label-sm uppercase tracking-wider font-bold">Live</span>
+                    </td>
+                    <td class="px-lg py-lg font-body-md text-body-md text-on-surface-variant">Oct 24, 2023</td>
+                    <td class="px-lg py-lg">
+                        <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
+                    </td>
+                </tr>
+                <tr class="hover:bg-surface-container-high transition-colors">
+                    <td class="px-lg py-lg flex items-center gap-md">
+                        <div class="w-10 h-14 rounded bg-surface-variant flex-shrink-0">
+                            <img alt="Gothic Horror" class="w-full h-full object-cover rounded"
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6qajuFkWcfeYzmYNCZwLvDakbTWoj0DObb2hjFC-YcwOz1rgWzl7J63P7amnU13q54rE9XjhrYtLnGQoLH__BywIzPS07_cByc6ePem0ygU33j4L0QA9J37S9q7kI-m7rC2Sx2uEkNydOPM5ZFueR0ucOpi63PESSfzkjOCFczc6s7c1ZydMGoWyddo92kCLXEc2qXqAiHLSA4Ai-bH_1SIvZ4K52PlzoMQlsHZLsi1iJgA9WG3ue9AGYEJ6lpOgB6uz4GrRu2a8" />
+                        </div>
+                        <span class="font-body-md text-body-md">The Last Echo</span>
+                    </td>
+                    <td class="px-lg py-lg font-body-md text-body-md">Drama</td>
+                    <td class="px-lg py-lg">
+                        <span class="px-sm py-xs bg-primary-container/10 text-primary-container rounded text-label-sm uppercase tracking-wider font-bold">Pending</span>
+                    </td>
+                    <td class="px-lg py-lg font-body-md text-body-md text-on-surface-variant">Oct 23, 2023</td>
+                    <td class="px-lg py-lg">
+                        <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
+                    </td>
+                </tr>
+                <tr class="hover:bg-surface-container-high transition-colors">
+                    <td class="px-lg py-lg flex items-center gap-md">
+                        <div class="w-10 h-14 rounded bg-surface-variant flex-shrink-0">
+                            <img alt="Neon Cinema" class="w-full h-full object-cover rounded"
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwWWNqs5aYzLVYsFcpVnqpfxc0QMx9Hd913JJu_HeuWAp6nBThQLwRMdKUfFoTS-Vk7x8fQAR_N0vJtda1w2_n0O6YgDvD7XafbuuQq_BxhRUMIeIUlXBEDOqQ6HNKrWIkLYFhPpqnaVid56InMuMGOuV6k5-42fAmbhDhYzejWM3ewsY3YZF_IxH4Xgk4y6z2RSW4uMkSLpX8WDkZenXd4dZLxtf6d_jbD700AJQN11SwuyVV0phW5PM18D7fl4Rhiy5AB27-mrk" />
+                        </div>
+                        <span class="font-body-md text-body-md">Midnight Pulse</span>
+                    </td>
+                    <td class="px-lg py-lg font-body-md text-body-md">Action</td>
+                    <td class="px-lg py-lg">
+                        <span class="px-sm py-xs bg-green-500/10 text-green-500 rounded text-label-sm uppercase tracking-wider font-bold">Live</span>
+                    </td>
+                    <td class="px-lg py-lg font-body-md text-body-md text-on-surface-variant">Oct 22, 2023</td>
+                    <td class="px-lg py-lg">
+                        <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="space-y-gutter">
+        <div class="glass-card p-lg rounded-xl">
+            <div class="flex justify-between items-center mb-lg">
+                <h3 class="font-title-lg text-title-lg">Platform Health</h3>
+                <span class="flex items-center gap-xs text-green-500 font-label-md">
+<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    Online
+                </span>
+            </div>
+            <div class="space-y-lg">
+                <div>
+                    <div class="flex justify-between mb-sm">
+                        <span class="font-label-md text-on-surface-variant">Server Uptime</span>
+                        <span class="font-label-md text-primary">99.9%</span>
+                    </div>
+                    <div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+                        <div class="h-full bg-primary" style="width: 99.9%"></div>
+                    </div>
+                </div>
+                <div class="pt-base border-t border-surface-variant">
+                    <p class="font-label-sm text-label-sm text-on-surface-variant mb-md uppercase tracking-widest">User Activity</p>
+                    <div class="h-24 flex items-end gap-1 px-base">
+                        <div class="flex-1 bg-primary/20 rounded-t-sm h-[40%]"></div>
+                        <div class="flex-1 bg-primary/40 rounded-t-sm h-[60%]"></div>
+                        <div class="flex-1 bg-primary/30 rounded-t-sm h-[50%]"></div>
+                        <div class="flex-1 bg-primary/70 rounded-t-sm h-[80%]"></div>
+                        <div class="flex-1 bg-primary/50 rounded-t-sm h-[65%]"></div>
+                        <div class="flex-1 bg-primary rounded-t-sm h-[95%]"></div>
+                        <div class="flex-1 bg-primary/60 rounded-t-sm h-[70%]"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card p-lg rounded-xl">
+            <h3 class="font-title-lg text-title-lg mb-lg">Quick Actions</h3>
+            <div class="flex flex-col gap-sm">
+                <button class="w-full flex items-center justify-start gap-md px-lg py-md bg-secondary-container text-on-secondary-container rounded-lg font-label-md hover:brightness-110 transition-all">
+                    <span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                    Add New Movie
+                </button>
+                <button class="w-full flex items-center justify-start gap-md px-lg py-md bg-surface-container-high text-on-surface rounded-lg font-label-md border border-surface-variant hover:bg-surface-variant transition-all">
+                    <span class="material-symbols-outlined" data-icon="send">send</span>
+                    Notify Users
+                </button>
+                <button class="w-full flex items-center justify-start gap-md px-lg py-md bg-surface-container-high text-on-surface rounded-lg font-label-md border border-surface-variant hover:bg-surface-variant transition-all">
+                    <span class="material-symbols-outlined" data-icon="download">download</span>
+                    Export Reports
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/admin-dashboard.js"></script>
+}

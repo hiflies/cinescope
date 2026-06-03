@@ -1,0 +1,258 @@
+@{
+    ViewData["Title"] = "My Collections";
+}
+
+<div class="flex pt-20">
+
+    <main class="flex-1 px-margin-mobile md:px-margin-desktop py-xl">
+
+        <section class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-xl">
+            <div>
+                <nav class="flex items-center gap-xs text-on-surface-variant font-label-sm mb-xs">
+                    <span>Library</span>
+                    <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                    <span class="text-primary-fixed">Collections</span>
+                </nav>
+                <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">My Collections</h1>
+                <p class="text-on-surface-variant font-body-md mt-2 max-w-2xl">Curate and organize your favorite cinematic masterpieces into themed folders for the ultimate viewing experience.</p>
+            </div>
+            <button class="flex items-center gap-2 bg-secondary-container text-on-secondary-container px-lg py-sm rounded-lg font-label-md font-bold hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary-container/10">
+                <span class="material-symbols-outlined">add</span>
+                Create New Collection
+            </button>
+        </section>
+
+        <section class="mb-xl">
+            <div class="flex items-center justify-between mb-md">
+                <h3 class="font-headline-md text-headline-md text-on-surface">Folders</h3>
+                <div class="flex gap-2">
+                    <button class="p-1 hover:bg-surface-variant rounded-full text-on-surface-variant transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+                    <button class="p-1 hover:bg-surface-variant rounded-full text-on-surface-variant transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+                </div>
+            </div>
+            <div class="flex gap-gutter overflow-x-auto pb-md custom-scrollbar">
+
+                <div class="flex-shrink-0 w-64 group cursor-pointer">
+                    <div class="relative h-40 rounded-xl overflow-hidden border-2 border-primary-container shadow-xl shadow-primary-container/5 mb-3">
+                        <div class="absolute inset-0 grid grid-cols-2 grid-rows-2">
+                            <img class="w-full h-full object-cover" data-alt="A dramatic high-contrast close-up of a spaceship cockpit illuminated by blue and red dashboard lights. The aesthetic is gritty and detailed sci-fi, with charcoal surfaces and vibrant red button accents. The lighting is cinematic and moody, fitting a Friday Night Sci-Fi collection theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfJyzOcnpTBp_4NRz8Qr9qQxhlgRT8bySFH_CCJbWrjz3aZ_bxIEpYmmti7VLKMhDQWPtzgmr5njpVdu5jLjJN2C3XW4mbSTH9yINckJ0J3bnWlfX2bqnkDqM4t5vmx_HkNW74fyA_L0BXUydY_zaEk_618SuI68RWZ6iFqk-nFxYtM7Y2JMWOTym-ct7uXV0jKrqyBiGpEQMdDtV-aF7rwRNmIG4JdTmRCcXtKcPvrQ5Qdru-4ldG_resTNYsUO_YmQmaWn_QzII"/>
+                            <img class="w-full h-full object-cover" data-alt="An expansive interstellar nebula glowing with ethereal purple and gold light. Tiny distant stars dot the dark charcoal void. The visual style is epic and immersive, evoking a sense of wonder and high-fidelity cinematic quality characteristic of the CineScope brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0Ke8QbSo3QEdK9Gsbt7dnjObEhC6BQItacHDcJ-mEfPUyBOB9WCxMVj7An0GbmwE9et0Z-9buESWIoH_Hv476NvqQk7ebi2BRNDec1393bTmFzw6X9eGf0lx4GLRV2TT-QtMEbTOFwptT_MdlIc7Fb8huRWC7pHrmM5vXYINvoU1ufwuKdlaPpj6fMpXdh7suNtNfZGBOw0kjKVhgtgCaD0xaLJgajqFpBIys-juYtDpxD4lGlG7D7g3sZa4YX_67_M8WA3bydhQ"/>
+                            <img class="w-full h-full object-cover" data-alt="A sleek, metallic robotic hand reaching out towards a glowing data interface. The scene is set in a dark laboratory with cold blue ambient lighting and warm gold data streams. The mood is sophisticated and technologically advanced, echoing modern corporate design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK48hAWmz_bWxNMmnl0Ak9fWLLjMIQnv6AWBYORQTLvVMloBrXMfzCS8L_zokzZmcFKh-FQGNrjMN1OBwVoGsrs1PH2H6EKJdlcKex54i_6qARSSrTdYQK0RVrksczz__wKgP1eDu01k-KCyOYsTBSpIlMZY_Q2w3sOyzH3kh1nESdG_Ku0-MqVSuyBEFuLl_Ghj1FBhRP6owXeVWZz2JPlRU3-ynDoDbx3o0lbhZoYsLw0pPL0iqLsf7uuVVC1moCAk3NqQmo8eM"/>
+                            <img class="w-full h-full object-cover" data-alt="A minimalist profile of an astronaut in a dark helmet, with the visor reflecting a distant exploding star. The color palette is deep charcoal and vibrant gold. The composition is artistic and premium, emphasizing focus and dramatic film discovery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX4EGL3KP8YKJR95eDN-_bI13Lj1EsqAR54hrwIiDO63Pq_nsXnRWpB1HQ1riybbMveZDTtZrtTB2zDRjiDs9IKHIkpbidJoSHsgDGC_0En0dL_uQ8xdDlc1CUFfVdJoVyNyB_1U_8dTYGoTK3xtwJJ_CnhO9G3MJI65m-xCQXZ9_5hnSb9IRlWAQq_3YeYIDoqH7T4ZEjVDDVSMNXaRSqBzngmI-b9-vL3vIzEZmzOCaHqtQarKvjHzZlCUcZ0QlKNpCLF0v6-yw"/>
+                        </div>
+                        <div class="absolute inset-0 bg-primary-container/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="material-symbols-outlined text-4xl text-on-primary-container">play_circle</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="font-label-md text-on-surface font-bold">Friday Night Sci-Fi</p>
+                            <p class="font-label-sm text-on-surface-variant">12 Titles • Created 2d ago</p>
+                        </div>
+                        <span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 w-64 group cursor-pointer">
+                    <div class="relative h-40 rounded-xl overflow-hidden border border-outline-variant mb-3">
+                        <div class="absolute inset-0 bg-surface-container-high flex items-center justify-center">
+                            <img class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500" data-alt="A series of intense, monochromatic cinematic portraits of diverse individuals, captured in deep shadows and bright white key lighting. The style is classic black-and-white documentary photography with heavy grain. The mood is serious, prestigious, and deeply authentic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJyI83ritSUpdsvTECpMlOVIgJK36o_yUSZhCIgG8OHzlTzuPp62bIW5MFa72hOqHBT887uIfBTa-PK36liy4pn7Me1oOvrdNXP3t3jGIPPEQICMAgiQy5athkipqVUaknkORVcDy-wMmAhCaKC1WnxlaWM4eMnWAECPP8pCBb1ISHDSA0C5Dec59MuYCd5GvEI_wg3kMwWW33BD5gbAyHByc0CPYqjk2inrC-TpCjK4-OK9k8WpLAEpKQczpc8tOtKkHJW2qgNks"/>
+                        </div>
+                        <div class="absolute inset-0 bg-black/40"></div>
+                        <div class="absolute bottom-3 left-3">
+                            <span class="material-symbols-outlined text-white/80">article</span>
+                        </div>
+                    </div>
+                    <p class="font-label-md text-on-surface-variant group-hover:text-on-surface transition-colors">Must Watch Docs</p>
+                    <p class="font-label-sm text-on-surface-variant/70">8 Titles • Created 1w ago</p>
+                </div>
+
+                <div class="flex-shrink-0 w-64 group cursor-pointer">
+                    <div class="relative h-40 rounded-xl overflow-hidden border border-outline-variant mb-3">
+                        <div class="absolute inset-0 bg-surface-container-high grid grid-cols-2">
+                            <img class="w-full h-full object-cover" data-alt="A lush, cinematic shot of a vintage cinema auditorium with red velvet seats and ornate gold detailing. The atmosphere is nostalgic and prestigious, illuminated by the warm glow of a screen just out of frame. The lighting is rich and theatrical, evoking a premium 'lights out' movie experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7poCH4P-L9bX1pjnaUQSvUS9HotkY15ljxSp4KYLffBAD-b9tzVyQ1r4-jgXO5lT6-91Tpym3_t9ioNSRQ7HNeK_2z0mQgUtU7iiOvnXs2VTl-tOcEQFMXG7t__Dzb0vCjVeB7PnHCsmebqvpbIzpzMMqvJMH4nZHBK7Vzsq-rk_kjR8VQTbmjIUPCgS23GdhUa_MBekMA4-2V8JJmtUSfpfInt7NeSQc_ezRDta9fQt_TPocYEOs06RxypP46XE80YC4nEtylvg"/>
+                            <img class="w-full h-full object-cover border-l border-outline-variant" data-alt="A close-up of a classic 35mm film reel spinning in a dimly lit projection booth. Soft ambient light catches the metallic edges of the reel, creating a sophisticated charcoal and silver palette. The mood is timeless and focused on the craft of cinema." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtzfarBEYCxvWF6WuX_7faQcwNfwVnDVaZQzArksTfWzguPKFt07lzCSVsRAu3vNsbNIwNKzb_Y99f0l3UtcsCsrkPbHJ79v5NGhu5iCNKl0yfcLRwyjZh8qNbwBF9rR3JoNBf6drD27Z9Oikso1vRn_wXUBeYIz3A2loRQAR5t0-zxAoydEPKVukWq9bznspx8zV0_yYUCG0tnpiILtbmBC4S27f7HHVJL_PmqPtoQqmAZBRWvGwnz0f_Eu3TPkEfZulffao2QW8"/>
+                        </div>
+                        <div class="absolute inset-0 bg-black/40"></div>
+                        <div class="absolute bottom-3 left-3">
+                            <span class="material-symbols-outlined text-white/80" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                        </div>
+                    </div>
+                    <p class="font-label-md text-on-surface-variant group-hover:text-on-surface transition-colors">All-Time Favorites</p>
+                    <p class="font-label-sm text-on-surface-variant/70">42 Titles • Created 1m ago</p>
+                </div>
+
+                <div class="flex-shrink-0 w-64 group cursor-pointer">
+                    <div class="h-40 rounded-xl border border-dashed border-outline-variant flex flex-col items-center justify-center gap-2 hover:bg-surface-variant/20 transition-all mb-3">
+                        <span class="material-symbols-outlined text-outline">add_circle</span>
+                        <span class="font-label-md text-outline">New Folder</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="flex flex-col sm:flex-row items-center justify-between gap-md mb-lg">
+            <div class="flex items-center gap-md w-full sm:w-auto">
+                <div class="flex bg-surface-container-high rounded-lg p-1 border border-outline-variant">
+                    <button class="flex items-center gap-2 px-md py-1.5 bg-surface-variant text-on-surface rounded-md font-label-md transition-all">
+                        <span class="material-symbols-outlined text-[18px]">grid_view</span>
+                        Grid
+                    </button>
+                    <button class="flex items-center gap-2 px-md py-1.5 text-on-surface-variant hover:text-on-surface rounded-md font-label-md transition-all">
+                        <span class="material-symbols-outlined text-[18px]">list</span>
+                        List
+                    </button>
+                </div>
+                <span class="text-outline-variant hidden sm:block">|</span>
+                <div class="flex items-center gap-2 text-on-surface-variant font-label-md">
+                    <span>Sort by:</span>
+                    <select class="bg-transparent border-none focus:ring-0 text-on-surface font-bold cursor-pointer">
+                        <option>Recently Added</option>
+                        <option>Title (A-Z)</option>
+                        <option>Release Date</option>
+                        <option>My Rating</option>
+                    </select>
+                </div>
+            </div>
+            <p class="font-label-sm text-on-surface-variant hidden sm:block">Showing <span class="text-on-surface font-bold">12</span> of 12 movies</p>
+        </section>
+
+        <section class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-gutter">
+
+            <div class="group movie-card relative flex flex-col bg-surface-container-low rounded-xl border border-outline-variant overflow-hidden hover:scale-[1.02] transition-all duration-300">
+                <div class="aspect-[2/3] relative overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A sleek and dramatic movie poster featuring a futuristic city silhouette against a deep crimson sunset. The style is modern minimalist with bold typography. The lighting is high-contrast, highlighting architectural lines and creating a premium theatrical vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD65GM6poOGE8E1gEz_7ZP1cDiFq52I5ovm4BDvbNNP5krhN0bSZ8ZGlf0hEz-WeRZYw8inKnEuVdiV8RGDx9dr0CQ01A_2YjUIXNPwrgHtoYWYvd3igwWW0czFJVPwMH3MgDW2FFc9XK3CjASIwa3CvTJZFMO-gmfdzrbODlY5FVTAge6tT2g6Ush6u9kbPOd_G8n1_v-F6bD1oHw0rfadw2MHIAV-0lFL2kHLW9M4FB7mQBmCyVoNWM_pxdrnbijRja9qVfoXYJk"/>
+                    <div class="remove-overlay absolute top-0 left-0 w-full h-full bg-black/60 opacity-0 flex items-center justify-center transition-opacity">
+                        <button class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                    <div class="absolute top-2 right-2 flex flex-col gap-2">
+<span class="bg-black/70 backdrop-blur-md text-primary-fixed-dim px-2 py-0.5 rounded font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 8.4
+              </span>
+                    </div>
+                </div>
+                <div class="p-md">
+                    <h4 class="font-label-md text-on-surface group-hover:text-primary-container transition-colors truncate">Project Zenith</h4>
+                    <div class="flex justify-between items-center mt-1">
+                        <p class="font-label-sm text-on-surface-variant">2024</p>
+                        <div class="w-8 h-1 bg-outline-variant rounded-full overflow-hidden">
+                            <div class="bg-secondary-container h-full w-2/3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group movie-card relative flex flex-col bg-surface-container-low rounded-xl border border-outline-variant overflow-hidden hover:scale-[1.02] transition-all duration-300">
+                <div class="aspect-[2/3] relative overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A moody cinematic movie poster showing a lone figure walking through a dense, foggy forest illuminated by a mysterious golden light from above. The color palette consists of deep forest greens, charcoal greys, and vibrant gold highlights. The mood is suspenseful and atmospheric." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxWvP6Z-0WEY6w_oRIltrRud-yey1C0rl95KCy8Z7q8mgMvQpUgUiCEjo-bHbV_MaWVLXkKgPHnjEQ1Pk7JR9-GP91mkQd4P7aZ_HizkgO2fRmcKEmrScwgTb4rPEoYhsAa13IGI7fKi0Y0qKXVfVZI5IhILwtLRfzC5j-C0VULjrstsZ7BmZecblCXpbQ1JyHP5DSIDpGcoPvuywJ0bDPbCwUo6KfkxixsvX4he7fYKAT8GMIOXOhHP92xPF1rXjVsd6Y_2Lx4to"/>
+                    <div class="remove-overlay absolute top-0 left-0 w-full h-full bg-black/60 opacity-0 flex items-center justify-center transition-opacity">
+                        <button class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                    <div class="absolute top-2 right-2">
+<span class="bg-black/70 backdrop-blur-md text-primary-fixed-dim px-2 py-0.5 rounded font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 7.9
+              </span>
+                    </div>
+                </div>
+                <div class="p-md">
+                    <h4 class="font-label-md text-on-surface group-hover:text-primary-container transition-colors truncate">The Silent Echo</h4>
+                    <p class="font-label-sm text-on-surface-variant mt-1">2023</p>
+                </div>
+            </div>
+
+            <div class="group movie-card relative flex flex-col bg-surface-container-low rounded-xl border border-outline-variant overflow-hidden hover:scale-[1.02] transition-all duration-300">
+                <div class="aspect-[2/3] relative overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A high-tech sci-fi movie poster featuring a detailed close-up of a human eye with a digital interface overlay. Vibrant teal and orange sparks fly across the scene. The lighting is intense and modern, reflecting a high-fidelity visual experience in a dark theater-like environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC47FO3DutBjHbnsCZR1Dawg8HO4H5PmQRImTJEsNjLiLSKh0aS0E0fPdnbiRyVmV6t45QBRLDCcr_AyqOrT7HwDIAgWoapVGdWc90wRZhLORPDKC6cgmGZ2ECzq0Yf7Qj0vgNYSbytCquQ3vOsam66TpWPoxPeec5wmKk2G0XRK44WkluDIzp9G1bskgsyfKMpuw3p9ekQJnHBT6s0EDnECQRN_OpoSJ0FZNWcFj9uNDBcMuYyCNBxRs08b7GMMGxBCg_tCuoSGFs"/>
+                    <div class="remove-overlay absolute top-0 left-0 w-full h-full bg-black/60 opacity-0 flex items-center justify-center transition-opacity">
+                        <button class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                    <div class="absolute top-2 right-2">
+<span class="bg-black/70 backdrop-blur-md text-primary-fixed-dim px-2 py-0.5 rounded font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 9.1
+              </span>
+                    </div>
+                </div>
+                <div class="p-md">
+                    <h4 class="font-label-md text-on-surface group-hover:text-primary-container transition-colors truncate">Cybernetic Dawn</h4>
+                    <p class="font-label-sm text-on-surface-variant mt-1">2024</p>
+                </div>
+            </div>
+
+            <div class="group movie-card relative flex flex-col bg-surface-container-low rounded-xl border border-outline-variant overflow-hidden hover:scale-[1.02] transition-all duration-300">
+                <div class="aspect-[2/3] relative overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="An artistic movie poster showing a surreal desert landscape with two moons in the sky. The sand is a deep violet, and the sky is a dark charcoal grey with hints of pink. The style is dreamlike and premium, showcasing unique cinematic discovery on CineScope." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnfjxZXVdJPF7Kic7xhd_raesiI7RRRzzdiZLz-3xGsBiTEEayFgE03d8umdD3ohyetya0lBCEljvLOOjKtMKs8-JiKc2YBQyRjVVw0SoLaZztB0O3RzAT3gzVsCsg4bae6Bdq_6o4FugK7PCZ_zWIkHpWjCmoS1Z37C82qOHeowUS-XcgVswUAZkoi1dIZq4IEZMVqHr6WrGKHB297S4zzTWOMHpnLp5TZoI4uf77SXA-lZGuLGepYC4QApHAZjK2mwQ5Tbvglw4"/>
+                    <div class="remove-overlay absolute top-0 left-0 w-full h-full bg-black/60 opacity-0 flex items-center justify-center transition-opacity">
+                        <button class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                    <div class="absolute top-2 right-2">
+<span class="bg-black/70 backdrop-blur-md text-primary-fixed-dim px-2 py-0.5 rounded font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 8.2
+              </span>
+                    </div>
+                </div>
+                <div class="p-md">
+                    <h4 class="font-label-md text-on-surface group-hover:text-primary-container transition-colors truncate">Moonrise Horizon</h4>
+                    <p class="font-label-sm text-on-surface-variant mt-1">2022</p>
+                </div>
+            </div>
+
+            <div class="group movie-card relative flex flex-col bg-surface-container-low rounded-xl border border-outline-variant overflow-hidden hover:scale-[1.02] transition-all duration-300">
+                <div class="aspect-[2/3] relative overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A high-intensity action movie poster with a sleek, metallic black car speeding through a tunnel of golden light streaks. The composition is dynamic and fast-paced, using a sophisticated dark palette punctuated by vibrant yellow trails. The lighting is sleek and polished." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcL28PBfN9g_onO_iTZ9-2_aTXJsq_HHxQgI5vn9NRkT1bbXU7n38FiK6vDvfu-bkZ2MoZMsR815eJMp13PAQohRE2uTjnW-L7RQ0MXLYGfs9X092q_VV7HU47OlkpjRRGz5gbHCTAgQGWTNuQsdWOgsgeK2xgiiTzheFWmSkWQC2Xmy-IrJsXCn-kDw1j4JMvW8REwhuKwFm-lpv8CpL8qzxQrXbR9ZOGQIJfl7Hd4MZSUMPSJ8o9biyRnMuqBS0TdCDMoSpUkpE"/>
+                    <div class="remove-overlay absolute top-0 left-0 w-full h-full bg-black/60 opacity-0 flex items-center justify-center transition-opacity">
+                        <button class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                    <div class="absolute top-2 right-2">
+<span class="bg-black/70 backdrop-blur-md text-primary-fixed-dim px-2 py-0.5 rounded font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 7.5
+              </span>
+                    </div>
+                </div>
+                <div class="p-md">
+                    <h4 class="font-label-md text-on-surface group-hover:text-primary-container transition-colors truncate">Overdrive</h4>
+                    <p class="font-label-sm text-on-surface-variant mt-1">2024</p>
+                </div>
+            </div>
+
+            <div class="group movie-card relative flex flex-col bg-surface-container-low rounded-xl border border-outline-variant overflow-hidden hover:scale-[1.02] transition-all duration-300">
+                <div class="aspect-[2/3] relative overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A minimalist and elegant poster of a lone piano standing on a frozen lake under a clear, starlit sky. The aesthetic is cold, peaceful, and visually stunning, with deep blues and crisp whites. The lighting is ambient and celestial, reflecting a high-quality indie film mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbkL3uWN6uRPBPpcV2cCFZ0WiNd8cHlAP4g9ITclzO8J0ETnr_usb-9VkrX6EIr_hjnA8EnlCrYfD-K1aNOiV5fK1nR7yiIM68rnZN8tA0Le_C8wXvNFOINVLECzVIGWVmhXGwsQNPKSklWia9QNJNKe70gZ3WRgqYmOQd2UmF-_mBKbrGj4vhb5FXTu0ycE9jiJzmOsHpgI1k01B9BWjNl0mxKwyPae0CAQZuuyWuCrNgRKDAL3q2DHuXsbfJS4wxQA0WZ5-zc9g"/>
+                    <div class="remove-overlay absolute top-0 left-0 w-full h-full bg-black/60 opacity-0 flex items-center justify-center transition-opacity">
+                        <button class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                    <div class="absolute top-2 right-2">
+<span class="bg-black/70 backdrop-blur-md text-primary-fixed-dim px-2 py-0.5 rounded font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 8.8
+              </span>
+                    </div>
+                </div>
+                <div class="p-md">
+                    <h4 class="font-label-md text-on-surface group-hover:text-primary-container transition-colors truncate">Solitude</h4>
+                    <p class="font-label-sm text-on-surface-variant mt-1">2023</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="mt-xl flex justify-center">
+            <button class="px-xl py-md border border-outline-variant text-on-surface hover:bg-surface-variant/30 rounded-lg font-label-md transition-all active:scale-95">
+                Load More Titles
+            </button>
+        </div>
+    </main>
+</div>
+
+@section Scripts {
+    <script src="~/js/my-collections.js"></script>
+}
