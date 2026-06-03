@@ -1,6 +1,8 @@
+using CineScope.Models;
 using CineScope.Services;
 using CineScope.Utils;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CineScope.Controllers;
 
@@ -24,7 +26,18 @@ public class MovieController(MovieRepository repository) : Controller
         ViewBag.BackdropImageUrl = movie.BackdropImageUrl;
         ViewBag.Genres = string.Join(" • ", movie.Genres.Select(g => g.Name));
         ViewBag.Rating = movie.Rating.ToString("N1");
+        ViewBag.SimilarMovies = GetSimilarMovies(movie);
 
         return View();
+    }
+
+    private List<Movie> GetSimilarMovies(Movie movie)
+    {
+        return repository.GetAll()
+            .Include(m => m.Genres)
+            .Where(m => m.Genres.Any(g => movie.Genres.Contains(g)))
+            .Where(m =>m != movie)
+            .Take(4)
+            .ToList();
     }
 }

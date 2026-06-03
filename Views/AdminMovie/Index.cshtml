@@ -5,12 +5,19 @@
     int movieCount = ViewBag.MovieCount;
     int page = ViewBag.Page;
     int size = ViewBag.Size;
+    string search = ViewBag.Search;
+    var searchQuery = "";
+    if (!string.IsNullOrEmpty(search))
+    {
+        searchQuery = $"&search={search}";
+    }
 }
 
 <div class="movie-management flex justify-between items-end">
     <div>
         <h2 class="font-headline-lg text-headline-lg text-on-surface">Movie Library</h2>
-        <p class="text-body-md text-on-surface-variant">Manage your catalog of @movieCount.ToCountString() cinematic masterpieces.</p>
+        <p class="text-body-md text-on-surface-variant">Manage your catalog of @movieCount.ToCountString() cinematic
+            masterpieces.</p>
     </div>
     <a href="/admin/movies/add"
        class="flex items-center gap-md bg-secondary-container text-on-secondary-container font-bold px-lg py-sm rounded-lg hover:scale-105 active:scale-95 transition-all duration-300">
@@ -37,8 +44,9 @@
         {
             <tr class="movie-row border-b border-outline-variant transition-colors group">
                 <td class="px-lg py-md">
-                    <div class="w-12 h-16 rounded overflow-hidden border border-outline-variant group-hover:scale-110 transition-transform">
-                        <img class="w-full h-full object-cover" src="@movie.PosterUrl" />
+                    <div
+                        class="w-12 h-16 rounded overflow-hidden border border-outline-variant group-hover:scale-110 transition-transform">
+                        <img class="w-full h-full object-cover" src="@movie.PosterUrl"/>
                     </div>
                 </td>
                 <td class="px-lg py-md font-bold text-on-surface">@movie.Title</td>
@@ -81,12 +89,28 @@
             Page = page,
             Size = size,
             Count = movieCount,
-            UrlTemplate = "/admin/movies?page={page}"
+            UrlTemplate = "/admin/movies?page={page}" + searchQuery
         };
     }
-    <partial name="_AdminPagination" model="paginationModel" />
+    <partial name="_AdminPagination" model="paginationModel"/>
 </div>
 
 @section Scripts {
     <script src="~/js/admin-movie-management.js"></script>
+}
+
+@section NavBar{
+    <div class="relative w-full max-w-md">
+        <form method="get" action="/admin/movies">
+        <span
+            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+            <input
+                name="search"
+                value="@search"
+                type="text"
+                onkeydown="e=> e.key === 'Enter' && e.target.parent.submit()"
+                class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pl-10 pr-4 text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary-container transition-all"
+                placeholder="Search database...">
+        </form>
+    </div>
 }

@@ -1,41 +1,49 @@
 using CineScope.Models;
 using CineScope.Services;
+using CineScope.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CineScope.Controllers;
 
-public class AdminMovieController : Controller
+public class AdminMovieController(MovieRepository repository, GenreRepository genreRepository, TmdbApiService tmdbApi)
+    : Controller
 {
-    private readonly MovieRepository _repository;
-    private readonly GenreRepository _genreRepository;
-
-    public AdminMovieController(MovieRepository repository, GenreRepository genreRepository)
-    {
-        _repository = repository;
-        _genreRepository = genreRepository;
-    }
-
     [HttpGet("/admin/movies")]
-    public async Task<IActionResult> Index([FromQuery] int page = 1)
+    public async Task<IActionResult> Index([FromQuery] int page = 1, [FromQuery] string search = "")
     {
-        const int size = 3;
+        const int size = 10;
         if (page < 1) page = 1;
         var skip = (page - 1) * size;
 
-        var movies = await _repository.GetAll()
+        var query = repository.GetAll();
+        if (!string.IsNullOrEmpty(search))
+        {
+            query = query.Where(g => EF.Functions.Like(g.Title, $"{search}%"));
+        }
+
+        var movies = await query
             .OrderBy(m => m.Id)
             .Include(m => m.Genres)
             .Skip(skip)
             .Take(size)
             .ToListAsync();
 
-        var movieCount = await _repository.GetAll().CountAsync();
+        int movieCount;
+        if (!string.IsNullOrEmpty(search))
+        {
+            movieCount = await repository.GetAll().CountAsync(m => EF.Functions.Like(m.Title, $"{search}%"));
+        }
+        else
+        {
+            movieCount = await repository.GetAll().CountAsync();
+        }
 
         ViewBag.Movies = movies;
         ViewBag.MovieCount = movieCount;
         ViewBag.Page = page;
         ViewBag.Size = size;
+        ViewBag.Search = search;
 
         return View();
     }
@@ -43,18 +51,19 @@ public class AdminMovieController : Controller
     [HttpPost("/admin/movies/delete/{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
-        var movie = await _repository.Get(id);
+        var movie = await repository.Get(id);
         if (movie != null)
         {
-            await _repository.DeleteAsync(movie);
+            await repository.DeleteAsync(movie);
         }
+
         return Redirect("/admin/movies");
     }
 
     [HttpGet("/admin/movies/add")]
     public async Task<IActionResult> Add()
     {
-        ViewBag.Genres = await _genreRepository.GetAll().ToListAsync();
+        ViewBag.Genres = await genreRepository.GetAll().ToListAsync();
         return View();
     }
 
@@ -64,7 +73,7 @@ public class AdminMovieController : Controller
         string ageRating, string description, string director, string actors,
         string posterUrl, string backdropImageUrl, List<int> selectedGenreIds)
     {
-        var genres = await _genreRepository.GetAll().ToListAsync();
+        var genres = await genreRepository.GetAll().ToListAsync();
         ViewBag.Genres = genres;
 
         var movie = new Movie
@@ -82,17 +91,18 @@ public class AdminMovieController : Controller
             Genres = genres.Where(g => selectedGenreIds.Contains(g.Id)).ToList()
         };
 
-        _repository.Add(movie);
-        _repository.Save();
+        repository.Add(movie);
+        repository.Save();
         return Redirect("/admin/movies");
     }
 
     [HttpGet("/admin/movies/{id:int}")]
     public async Task<IActionResult> Edit(int id)
     {
-        var movie = await _repository.Get(id);
+        var movie = await repository.Get(id);
         if (movie == null) return NotFound();
 
+        ViewBag.MovieId = movie.Id;
         ViewBag.MovieTitle = movie.Title;
         ViewBag.Tagline = movie.Tagline;
         ViewBag.ReleaseYear = movie.ReleaseYear.ToString();
@@ -104,7 +114,7 @@ public class AdminMovieController : Controller
         ViewBag.PosterUrl = movie.PosterUrl;
         ViewBag.BackdropImageUrl = movie.BackdropImageUrl;
         ViewBag.SelectedGenreIds = movie.Genres.Select(g => g.Id).ToList();
-        ViewBag.Genres = await _genreRepository.GetAll().ToListAsync();
+        ViewBag.Genres = await genreRepository.GetAll().ToListAsync();
 
         return View();
     }
@@ -115,10 +125,10 @@ public class AdminMovieController : Controller
         string ageRating, string description, string director, string actors,
         string posterUrl, string backdropImageUrl, List<int> selectedGenreIds)
     {
-        var movie = await _repository.Get(id);
+        var movie = await repository.Get(id);
         if (movie == null) return NotFound();
 
-        var genres = await _genreRepository.GetAll().ToListAsync();
+        var genres = await genreRepository.GetAll().ToListAsync();
 
         movie.Title = title;
         movie.Tagline = tagline;
@@ -132,7 +142,29 @@ public class AdminMovieController : Controller
         movie.BackdropImageUrl = backdropImageUrl;
         movie.Genres = genres.Where(g => selectedGenreIds.Contains(g.Id)).ToList();
 
-        _repository.Save();
+        repository.Save();
         return Redirect("/admin/movies");
+    }
+
+    [HttpGet("/admin/movies/{id:int}/update")]
+    public async Task<IActionResult> UpdateFromTmdb(int id)
+    {
+        var movie = await repository.Get(id);
+        if (movie == null) return NotFound();
+
+        var tmdbMovie = await tmdbApi.GetMovieById((int)movie.TmdbId!);
+        if (tmdbMovie == null) return NotFound();
+
+        var allGenres = await genreRepository.GetAll().ToListAsync();
+
+        TmdbModelTransformer.Load(movie, tmdbMovie);
+        List<Genre> newGenres;
+        movie.Genres =
+            TmdbModelTransformer.LoadGenres(tmdbMovie.Genres.Select(g => g.Name).ToList(), allGenres, out newGenres);
+        genreRepository.Add(newGenres);
+
+        genreRepository.Save();
+        repository.Save();
+        return Redirect($"/admin/movies/{id}");
     }
 }

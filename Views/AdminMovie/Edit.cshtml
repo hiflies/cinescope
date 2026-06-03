@@ -1,6 +1,7 @@
 @{
     ViewData["Title"] = "CineScope - Admin - Edit Movie";
     Layout = "_AdminLayout";
+    int movieId = ViewBag.MovieId;
     string movieTitle = ViewBag.MovieTitle;
     string tagline = ViewBag.Tagline;
     string releaseYear = ViewBag.ReleaseYear;
@@ -28,6 +29,11 @@
         </h2>
     </div>
     <div class="flex items-center gap-md">
+        <a href="/admin/movies/@movieId/update"
+                class="px-xl py-md rounded-lg bg-secondary-container text-on-secondary-container font-label-md hover:brightness-110 active:scale-95 transition-all flex items-center gap-base">
+            <span class="material-symbols-outlined">update</span>
+            Update From TMDB
+        </a>
         <a href="/admin/movies"
            class="px-xl py-md rounded-lg border border-outline-variant text-on-surface font-label-md hover:bg-surface-container-low transition-colors">
             Discard Changes

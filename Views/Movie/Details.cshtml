@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Movie Details";
+    List<Movie> movies = ViewBag.SimilarMovies;
 }
 
 <main class="pt-0">
@@ -7,7 +7,7 @@
     <section class="relative h-[614px] md:h-[819px] w-full overflow-hidden">
         <div class="absolute inset-0">
             <img class="w-full h-full object-cover"
-                 src="@ViewBag.BackdropImageUrl" />
+                 src="@ViewBag.BackdropImageUrl"/>
             <div class="absolute inset-0 hero-gradient"></div>
         </div>
         <div class="absolute bottom-32 left-0 w-full px-margin-mobile md:px-margin-desktop pb-xl flex flex-col gap-xs">
@@ -25,7 +25,7 @@
             <div
                 class="rounded-xl overflow-hidden border border-surface-container-highest shadow-2xl aspect-[2/3] bg-surface-container">
                 <img class="w-full h-full object-cover"
-                     src="@ViewBag.PosterUrl" />
+                     src="@ViewBag.PosterUrl"/>
             </div>
             <div class="flex flex-col gap-md">
                 <div class="grid grid-cols-2 gap-base">
@@ -87,25 +87,28 @@
 
             <div class="mt-xl">
                 <div class="flex gap-xl border-b border-surface-container-highest mb-lg">
-                    <button class="pb-md text-primary-container font-bold border-b-2 border-primary-container">Reviews</button>
-                    <button class="pb-md text-on-surface-variant hover:text-on-surface transition-colors">Overview</button>
-                    <button class="pb-md text-on-surface-variant hover:text-on-surface transition-colors">Similar Movies</button>
+                    <div class="pb-md text-primary-container font-bold border-b-2 border-primary-container">Reviews
+                    </div>
                 </div>
 
                 <div class="flex flex-col gap-lg">
-                    <div class="bg-surface-container p-lg rounded-xl border border-surface-container-highest flex flex-col gap-md">
+                    <div
+                        class="bg-surface-container p-lg rounded-xl border border-surface-container-highest flex flex-col gap-md">
                         <div class="flex justify-between items-start">
                             <div class="flex items-center gap-md">
                                 <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
                                     <img class="w-full h-full object-cover"
-                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF3dV0_5643ChqUyREX-5acyyx7T9-6knJVLhtng5Ct4zK75k51Z04Izj6bPdWP7n6H5irUwWrAlUBgQAsz9Jes0lSZKwWZhVHYBh_5GvrfqgaIyl7s1qvU6uqGVLvpk5-Ep5KBp51cVHyO9wcZrcl5glciUx8C3RdVr4G4I5vqkkbqiqLb493x50UpRSQfOZkdpPu6Uu3k1mrK9hURYmAhZyzf6Ey9REzTeaaGiuM5eRe8-B3FSe5iCoGxmL3I2ecegCzoSeyqPU" />
+                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF3dV0_5643ChqUyREX-5acyyx7T9-6knJVLhtng5Ct4zK75k51Z04Izj6bPdWP7n6H5irUwWrAlUBgQAsz9Jes0lSZKwWZhVHYBh_5GvrfqgaIyl7s1qvU6uqGVLvpk5-Ep5KBp51cVHyO9wcZrcl5glciUx8C3RdVr4G4I5vqkkbqiqLb493x50UpRSQfOZkdpPu6Uu3k1mrK9hURYmAhZyzf6Ey9REzTeaaGiuM5eRe8-B3FSe5iCoGxmL3I2ecegCzoSeyqPU"/>
                                 </div>
                                 <div>
                                     <h4 class="font-label-md text-label-md">Alex Rivera</h4>
                                     <span class="text-label-sm text-on-surface-variant">October 14, 2023</span>
                                 </div>
                             </div>
-                            <div class="px-md py-xs bg-primary-container/10 border border-primary-container/20 rounded-lg text-primary-container font-bold text-label-md">9/10</div>
+                            <div
+                                class="px-md py-xs bg-primary-container/10 border border-primary-container/20 rounded-lg text-primary-container font-bold text-label-md">
+                                9/10
+                            </div>
                         </div>
                         <p class="text-body-md text-on-surface-variant">
                             Inception is a rare masterpiece that combines high-octane action with a deeply intellectual
@@ -114,37 +117,45 @@
                             Truly a cinematic landmark.
                         </p>
                     </div>
-                    <div class="bg-surface-container p-lg rounded-xl border border-surface-container-highest flex flex-col gap-md">
+                    <div
+                        class="bg-surface-container p-lg rounded-xl border border-surface-container-highest flex flex-col gap-md">
                         <div class="flex justify-between items-start">
                             <div class="flex items-center gap-md">
                                 <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
                                     <img alt="User Avatar" class="w-full h-full object-cover"
-                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9S33vD_kE_26p-E6B9E_E5H7m2jR_3qK4S_N5n-V-wL_8y-zX-F-Q_J8-X-L-J-X-L-J-X-L-J" />
+                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9S33vD_kE_26p-E6B9E_E5H7m2jR_3qK4S_N5n-V-wL_8y-zX-F-Q_J8-X-L-J-X-L-J-X-L-J"/>
                                 </div>
                                 <div>
                                     <h4 class="font-label-md text-label-md">Sarah Jenkins</h4>
                                     <span class="text-label-sm text-on-surface-variant">October 12, 2023</span>
                                 </div>
                             </div>
-                            <div class="px-md py-xs bg-primary-container/10 border border-primary-container/20 rounded-lg text-primary-container font-bold text-label-md">10/10</div>
+                            <div
+                                class="px-md py-xs bg-primary-container/10 border border-primary-container/20 rounded-lg text-primary-container font-bold text-label-md">
+                                10/10
+                            </div>
                         </div>
                         <p class="text-body-md text-on-surface-variant">An absolute tour de force. The layering of
                             reality and the practical effects are mind-blowing. Hans Zimmer's score is the perfect
                             companion to this journey.</p>
                     </div>
-                    <div class="bg-surface-container p-lg rounded-xl border border-surface-container-highest flex flex-col gap-md">
+                    <div
+                        class="bg-surface-container p-lg rounded-xl border border-surface-container-highest flex flex-col gap-md">
                         <div class="flex justify-between items-start">
                             <div class="flex items-center gap-md">
                                 <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
                                     <img alt="User Avatar" class="w-full h-full object-cover"
-                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X" />
+                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X"/>
                                 </div>
                                 <div>
                                     <h4 class="font-label-md text-label-md">Michael Chen</h4>
                                     <span class="text-label-sm text-on-surface-variant">October 10, 2023</span>
                                 </div>
                             </div>
-                            <div class="px-md py-xs bg-primary-container/10 border border-primary-container/20 rounded-lg text-primary-container font-bold text-label-md">8/10</div>
+                            <div
+                                class="px-md py-xs bg-primary-container/10 border border-primary-container/20 rounded-lg text-primary-container font-bold text-label-md">
+                                8/10
+                            </div>
                         </div>
                         <p class="text-body-md text-on-surface-variant">Complex, visually stunning, and ambitious. It
                             requires multiple viewings to fully grasp everything, but that's part of the fun. A bit long
@@ -152,13 +163,24 @@
                     </div>
                 </div>
                 <div class="flex justify-center items-center gap-base mt-xl">
-                    <button class="flex items-center justify-center p-base rounded-full hover:bg-surface-container-high text-on-surface-variant">
+                    <button
+                        class="flex items-center justify-center p-base rounded-full hover:bg-surface-container-high text-on-surface-variant">
                         <span class="material-symbols-outlined">chevron_left</span>
                     </button>
-                    <button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary-container text-on-primary font-bold">1</button>
-                    <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high text-on-surface-variant">2</button>
-                    <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high text-on-surface-variant">3</button>
-                    <button class="flex items-center justify-center p-base rounded-full hover:bg-surface-container-high text-on-surface-variant">
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-primary-container text-on-primary font-bold">
+                        1
+                    </button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high text-on-surface-variant">
+                        2
+                    </button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high text-on-surface-variant">
+                        3
+                    </button>
+                    <button
+                        class="flex items-center justify-center p-base rounded-full hover:bg-surface-container-high text-on-surface-variant">
                         <span class="material-symbols-outlined">chevron_right</span>
                     </button>
                 </div>
@@ -167,65 +189,29 @@
             <div class="mt-xl">
                 <div class="flex items-center justify-between mb-lg">
                     <h3 class="font-headline-md text-headline-md">Similar Movies</h3>
-                    <button class="text-primary-container font-label-md hover:underline">View All</button>
                 </div>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-gutter overflow-x-auto pb-md">
-                    <div class="movie-card-hover transition-all duration-300 border border-transparent rounded-lg overflow-hidden group cursor-pointer bg-surface-container">
-                        <div class="aspect-[2/3] relative">
-                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1FkYv3MR8xdzUrsY23vovjavKfkUg5QHR2gpyEQbVsjsDlUJuOsoSqu7TWVkxc3jeqCFD6NjHFrnixKKja4o1ULpgo-_Pp1Xf1QEicP8rZftKXDERteFS6XQ8R7Y-hVsTnIzwN88Inuckm6QGVEqtKCWpoQat6N2mjiGguDkoaLBbcpAlcnMQ9xH63VJOyULK3A5-qvsStjoQo8GVLxHSWhkURFuiJ5wxeZwlyBC-SHuJai-LIng2_xIFcKZwD0j7dGgGS_jihqM" />
-                            <div class="absolute top-2 right-2 px-xs py-xs bg-black/60 backdrop-blur rounded flex items-center gap-xs">
-                                <span class="material-symbols-outlined text-primary-container text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="text-[12px] font-bold">8.7</span>
+                    @foreach (var movie in movies)
+                    {
+                        <a href="/movies/@movie.Id"
+                           class="movie-card-hover transition-all duration-300 border border-transparent rounded-lg overflow-hidden group cursor-pointer bg-surface-container">
+                            <div class="aspect-[2/3] relative">
+                                <img
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    src="@movie.PosterUrl"/>
+                                <div
+                                    class="absolute top-2 right-2 px-xs py-xs bg-black/60 backdrop-blur rounded flex items-center gap-xs">
+                                    <span class="material-symbols-outlined text-primary-container text-[14px]"
+                                          style="font-variation-settings: 'FILL' 1;">star</span>
+                                    <span class="text-[12px] font-bold">@movie.Rating.ToString("N1")</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="p-base">
-                            <h5 class="text-label-md font-bold truncate">Interstellar</h5>
-                            <p class="text-label-sm text-on-surface-variant">2014 • Sci-Fi</p>
-                        </div>
-                    </div>
-                    <div class="movie-card-hover transition-all duration-300 border border-transparent rounded-lg overflow-hidden group cursor-pointer bg-surface-container">
-                        <div class="aspect-[2/3] relative">
-                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMlaZQhAIeaYslgBouIzQjlicVEtiHTaewnfXiCrhmiL_itX72DWrphvHMBZVAHsensswxVFzfzuvydf_Eoh53WMgsElkLAZWES8G9_XhBnm6i9B0qvQUuUstAUP_yqcDsSFymtApacJgJDoW36IjKlHW-WDQ-EVtHju86avNNfDQ7HvT9Apml3uRuLbn26ZAv-yAF3qFKZx5s_7v0SBtFn8JrB0kOh1v7u1uFEH81ILTjzW5Vadfsq3ws4mNhUsgYJMKI0gD8Ga0" />
-                            <div class="absolute top-2 right-2 px-xs py-xs bg-black/60 backdrop-blur rounded flex items-center gap-xs">
-                                <span class="material-symbols-outlined text-primary-container text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="text-[12px] font-bold">9.0</span>
+                            <div class="p-base">
+                                <h5 class="text-label-md font-bold truncate">@movie.Title</h5>
+                                <p class="text-label-sm text-on-surface-variant">@movie.ReleaseYear • @movie.Genres.First().Name</p>
                             </div>
-                        </div>
-                        <div class="p-base">
-                            <h5 class="text-label-md font-bold truncate">The Dark Knight</h5>
-                            <p class="text-label-sm text-on-surface-variant">2008 • Action</p>
-                        </div>
-                    </div>
-                    <div class="movie-card-hover transition-all duration-300 border border-transparent rounded-lg overflow-hidden group cursor-pointer bg-surface-container">
-                        <div class="aspect-[2/3] relative">
-                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt3l_vywJ7ziE5Vg3W8qymf63ITC7-wm8ZI7WEYKWfPzcHwaL9Y_cPP5TvuOvuHPUWXlkq7C6lDZygDsAO-36_OeOok0oxAOhKh3cDBDsegv4twnDPLHDQaPdVSal3ox_u7uzMXtlrTBFIBderkzFkd_Oo_fN_iNUPPbOQx-GlA-7kfUgNsUAnZiKatlpAb959Oaldbvkocfpi-NTBcnZuR71KUZmnSm24dHHM5o3BLDyUCSmuCj_5HXfx2A5uwXrFP5mkJe38BrU" />
-                            <div class="absolute top-2 right-2 px-xs py-xs bg-black/60 backdrop-blur rounded flex items-center gap-xs">
-                                <span class="material-symbols-outlined text-primary-container text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="text-[12px] font-bold">7.4</span>
-                            </div>
-                        </div>
-                        <div class="p-base">
-                            <h5 class="text-label-md font-bold truncate">Tenet</h5>
-                            <p class="text-label-sm text-on-surface-variant">2020 • Sci-Fi</p>
-                        </div>
-                    </div>
-                    <div class="movie-card-hover transition-all duration-300 border border-transparent rounded-lg overflow-hidden group cursor-pointer bg-surface-container">
-                        <div class="aspect-[2/3] relative">
-                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCj_rjmmBD7Yu-bxmLyS3fx7GKYlWLhXdEnwYxGuGpSIJBDVcSwdF7WbjuI7TOmoYq_ztEG9w9nSQa4u_LcUV9aoZuKZjivXRY8CHmZ7Dft5hwxii6w0I7UB2xsRp0jMvnFmyJrqC-ZSxV8u7doVCKiNAd9xKwJ07zQrrBNqxqqdjZdUdTrR4yeNDkW6zNuASId5trEw-gIrE1nQbPR5pHIb7wZT-aP3IvA9b0deVu-e6ammDw2PD6Tr_eFCcua8-EUahCDPVjlQRE" />
-                            <div class="absolute top-2 right-2 px-xs py-xs bg-black/60 backdrop-blur rounded flex items-center gap-xs">
-                                <span class="material-symbols-outlined text-primary-container text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="text-[12px] font-bold">8.4</span>
-                            </div>
-                        </div>
-                        <div class="p-base">
-                            <h5 class="text-label-md font-bold truncate">Memento</h5>
-                            <p class="text-label-sm text-on-surface-variant">2000 • Mystery</p>
-                        </div>
-                    </div>
+                        </a>
+                    }
                 </div>
             </div>
         </section>

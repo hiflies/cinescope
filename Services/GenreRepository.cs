@@ -12,4 +12,14 @@ public class GenreRepository(CineScopeDbContext context)
     {
         return context.Genres.FindAsync(id);
     }
+
+    public void Add(List<Genre> newGenres)
+    {
+        context.Genres.AddRange(newGenres);
+    }
+
+    public void Save()
+    {
+        context.SaveChanges();
+    }
 }

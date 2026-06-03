@@ -8,9 +8,12 @@ builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<CineScopeDbContext>(options => options.UseSqlServer(connectionString));
 
+var appConfig = builder.Configuration.GetSection("App");
+
 builder.Services
     .AddScoped<MovieRepository, MovieRepository>()
     .AddScoped<GenreRepository, GenreRepository>()
+    .AddSingleton(new TmdbApiService(appConfig["TmdbApiKey"]!))
     ;
 
 var app = builder.Build();

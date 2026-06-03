@@ -15,4 +15,5 @@ public class Movie
     public string Director { get; set; }
     public string Actors { get; set; }
     public string AgeRating { get; set; }
+    public int? TmdbId { get; set; }
 }
