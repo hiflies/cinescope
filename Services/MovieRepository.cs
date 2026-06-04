@@ -5,7 +5,7 @@ namespace CineScope.Services;
 
 public class MovieRepository(CineScopeDbContext context)
 {
-    public IQueryable<Movie> GetAll()
+    public IQueryable<Movie> CreateQuery()
     {
         return context.Movies;
     }

@@ -6,8 +6,26 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CineScope.Controllers;
 
-public class MovieController(MovieRepository repository) : Controller
+public class MovieController(MovieRepository repository, GenreRepository genreRepository) : Controller
 {
+    [HttpGet("/movies")]
+    public async Task<IActionResult> Index()
+    {
+        var movies = repository.CreateQuery()
+            .Include(m => m.Genres)
+            .OrderByDescending(m=>m.ReleaseYear)
+            .ThenByDescending(m=>m.Id)
+            .ToList();
+
+        var genres = genreRepository.CreateQuery()
+            .OrderByDescending(g => g.Movies.Count)
+            .ToList();
+        
+        ViewBag.Movies = movies;
+        ViewBag.Genres = genres;
+        return View();
+    }
+
     [HttpGet("/movies/{id:int}")]
     public async Task<IActionResult> Details(int id)
     {
@@ -33,7 +51,7 @@ public class MovieController(MovieRepository repository) : Controller
 
     private List<Movie> GetSimilarMovies(Movie movie)
     {
-        return repository.GetAll()
+        return repository.CreateQuery()
             .Include(m => m.Genres)
             .Where(m => m.Genres.Any(g => movie.Genres.Contains(g)))
             .Where(m =>m != movie)

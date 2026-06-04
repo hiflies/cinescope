@@ -1,6 +1,3 @@
-// Navbar scroll effect
-
-
 // Hero Auto-Rotating Logic
 let currentSlide = 0;
 const slides = document.querySelectorAll('.hero-slide');

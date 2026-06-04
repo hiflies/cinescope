@@ -1,0 +1,118 @@
+@{
+    ViewData["Title"] = "CineScope - Movies";
+    List<Movie> movies = ViewBag.Movies;
+    List<Genre> genres = ViewBag.Genres;
+}
+
+<div class="flex flex-1 pt-24 pb-xl px-margin-desktop gap-gutter">
+
+    <aside class="hidden md:flex flex-col w-64 shrink-0 glass-surface rounded-xl p-lg sticky top-24 h-fit">
+        <div class="mb-lg">
+            <h2 class="font-headline-md text-headline-md text-primary mb-xs">Filters</h2>
+        </div>
+        <div class="space-y-xl">
+
+            <div class="relative flex flex-col max-h-[400px]">
+                <span class="font-label-md text-label-md text-on-surface block mb-md">Genre</span>
+                <div class="grid grid-cols-1 gap-sm overflow-y-auto pl-[4px] flex-1 pb-16">
+                    @foreach (var genre in genres)
+                    {
+                        <label class="flex items-center gap-sm cursor-pointer group">
+                            <input checked=""
+                                   class="rounded border-outline-variant bg-surface-container text-primary-container focus:ring-primary-container"
+                                   type="checkbox">
+                            <span
+                                class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">@genre.Name</span>
+                        </label>
+                    }
+                </div>
+                <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
+            </div>
+
+            <div>
+                <div class="flex justify-between items-center mb-md">
+                    <span class="font-label-md text-label-md text-on-surface">Min. Rating</span>
+                    <span class="font-label-sm text-label-sm text-primary">0.0+</span>
+                </div>
+                <input
+                    class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer range-slider"
+                    max="10" min="0" step="0.5" type="range" value="0">
+            </div>
+
+            <div>
+                <span class="font-label-md text-label-md text-on-surface block mb-md">Sort By</span>
+                <select
+                    class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm text-body-md focus:outline-none focus:border-primary-container">
+                    <option selected="">Newest</option>
+                    <option>Rating</option>
+                </select>
+            </div>
+        </div>
+        <button
+            class="mt-xl w-full bg-secondary-container text-on-secondary-container py-md rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">
+            Apply Filters
+        </button>
+    </aside>
+
+    <main class="flex-1">
+        <header class="mb-xl">
+            <h1 class="font-headline-lg text-headline-lg text-on-surface mb-md">Results for <span class="text-primary">'Sci-Fi'</span>
+            </h1>
+            <div class="flex flex-wrap gap-sm items-center">
+                <div
+                    class="flex items-center gap-xs px-md py-1 bg-surface-variant border border-outline-variant rounded-full group cursor-pointer">
+                    <span class="font-label-sm text-label-sm text-on-surface">Genre: Sci-Fi</span>
+                    <span
+                        class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-error transition-colors">close</span>
+                </div>
+                <div
+                    class="flex items-center gap-xs px-md py-1 bg-surface-variant border border-outline-variant rounded-full group cursor-pointer">
+                    <span class="font-label-sm text-label-sm text-on-surface">Rating: 8.0+</span>
+                    <span
+                        class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-error transition-colors">close</span>
+                </div>
+                <button class="font-label-sm text-label-sm text-primary hover:underline ml-md">Clear all</button>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+            @foreach (var movie in movies)
+            {
+                <a href="/movies/@movie.Id"
+                   class="group relative flex flex-col glass-surface rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
+                    <div class="aspect-[2/3] relative overflow-hidden">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             src="@movie.PosterUrl">
+                        <div
+                            class="absolute top-md right-md px-sm py-1 bg-primary-container/90 backdrop-blur-md rounded-lg flex items-center gap-xs shadow-xl">
+                            <span class="material-symbols-outlined text-[14px] text-on-primary-container"
+                                  style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span
+                                class="font-label-md text-label-md text-on-primary-container">@movie.Rating.ToString("N1")</span>
+                        </div>
+                    </div>
+                    <div class="p-md flex flex-col gap-xs">
+                        <h3 class="font-title-lg text-title-lg text-on-surface group-hover:text-primary transition-colors">@movie.Title</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="font-body-md text-body-md text-on-surface-variant">@movie.ReleaseYear</span>
+                            <span
+                                class="font-label-sm text-label-sm text-on-surface-variant px-2 py-0.5 bg-surface-container rounded">@string.Join(" •  ", @movie.Genres.Take(3).Select(g => g.Name))</span>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+
+        <div class="mt-xl flex justify-center">
+            <button
+                class="bg-surface-container border border-outline-variant text-on-surface px-xl py-md rounded-full font-label-md text-label-md hover:bg-surface-variant transition-colors flex items-center gap-sm">
+                Load More Results
+                <span class="material-symbols-outlined">expand_more</span>
+            </button>
+        </div>
+    </main>
+</div>
+
+@section Scripts {
+    <script src="~/js/search.js"></script>
+}
