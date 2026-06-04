@@ -3,6 +3,7 @@
     List<Movie> featuredMovies = ViewBag.FeaturedMovies;
     List<Movie> recentlyAddedMovies = ViewBag.RecentlyAddedMovies;
     List<Movie> topRatedMovies = ViewBag.TopRatedMovies;
+    List<Movie> newestMovies = ViewBag.NewestMovies;
     List<Genre> genres = ViewBag.Genres;
 
     var featuredMovieIndex = 0;
@@ -52,7 +53,7 @@
             @foreach (var genre in genres)
             {
                 <a class="flex-none px-lg py-1.5 bg-surface-container-low border border-surface-container-highest rounded-full text-label-md text-on-surface hover:border-primary-container hover:text-primary-container transition-all"
-                   href="/movies?genreId=@genre.Id">@genre.Name</a>
+                   href="/movies?genreId[]=@genre.Id">@genre.Name</a>
             }
         </div>
     </section>
@@ -60,7 +61,7 @@
     <section class="mt-xl mb-xl px-margin-mobile md:px-margin-desktop">
         <div class="flex justify-between items-center mb-base">
             <h2 class="font-headline-md text-headline-md">Recently Added</h2>
-            <a class="text-primary-container font-label-md hover:underline" href="/movies?sortBy=newest">See all</a>
+            <a class="text-primary-container font-label-md hover:underline" href="/movies?sortBy=recent">See all</a>
         </div>
         <div class="movie-row-scroll flex gap-gutter overflow-x-auto pb-4">
             @foreach (var movie in recentlyAddedMovies)
@@ -131,6 +132,42 @@
         </div>
     </section>
 
+    <section class="mb-xl px-margin-mobile md:px-margin-desktop">
+        <div class="flex justify-between items-center mb-base">
+            <h2 class="font-headline-md text-headline-md">Trending Now</h2>
+            <a class="text-primary-container font-label-md hover:underline" href="/movies?sortBy=newest">See all</a>
+        </div>
+        <div class="movie-row-scroll flex gap-gutter overflow-x-auto pb-4">
+            @foreach (var movie in newestMovies)
+            {
+            <a href="/movies/@movie.Id" class="flex-none w-[160px] md:w-[220px] group cursor-pointer">
+                <div
+                    class="relative aspect-[2/3] rounded-lg overflow-hidden border border-surface-container-highest transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl">
+                    <img class="w-full h-full object-cover"
+                         src="@movie.PosterUrl"/>
+                    <div
+                        class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-base">
+                        <div class="absolute top-2 right-2 flex flex-col gap-xs">
+                            <span
+                                class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-[10px] font-bold">@movie.Rating.ToString("N1")</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="material-symbols-outlined text-white hover:text-error transition-colors"
+                                  onclick="heartPop(this)">favorite</span>
+                            <span
+                                class="material-symbols-outlined text-white hover:text-primary-container">add_circle</span>
+                            <span
+                                class="material-symbols-outlined text-white hover:text-primary-container">star</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-base font-title-lg text-on-surface truncate group-hover:text-primary-container transition-colors">
+                    @movie.Title</p>
+                <p class="text-label-sm text-on-surface-variant">@movie.ReleaseYear</p>
+            </a>
+            }
+        </div>
+    </section>
 </main>
 
 @section Scripts {

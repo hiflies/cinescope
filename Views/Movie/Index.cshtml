@@ -2,6 +2,7 @@
     ViewData["Title"] = "CineScope - Movies";
     List<Movie> movies = ViewBag.Movies;
     List<Genre> genres = ViewBag.Genres;
+    var filter = ViewBag.Filter;
 }
 
 <div class="flex flex-1 pt-24 pb-xl px-margin-desktop gap-gutter">
@@ -18,37 +19,67 @@
                     @foreach (var genre in genres)
                     {
                         <label class="flex items-center gap-sm cursor-pointer group">
-                            <input checked=""
-                                   class="rounded border-outline-variant bg-surface-container text-primary-container focus:ring-primary-container"
-                                   type="checkbox">
+                            <input
+                                checked="@(filter.Genres.Contains(genre.Id))"
+                                form="search-form"
+                                name="genreId[]"
+                                value="@genre.Id"
+                                class="rounded border-outline-variant bg-surface-container text-primary-container focus:ring-primary-container"
+                                type="checkbox">
                             <span
                                 class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">@genre.Name</span>
                         </label>
                     }
                 </div>
-                <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
+                <div
+                    class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
             </div>
 
             <div>
                 <div class="flex justify-between items-center mb-md">
                     <span class="font-label-md text-label-md text-on-surface">Min. Rating</span>
-                    <span class="font-label-sm text-label-sm text-primary">0.0+</span>
+                    <span id="rating-text"
+                          class="font-label-sm text-label-sm text-primary">@filter.Rating.ToString("N1")</span>
                 </div>
                 <input
+                    form="search-form"
+                    name="rating"
+                    value="@filter.Rating"
+                    oninput="document.getElementById('rating-text').innerHTML=Number(this.value).toFixed(1)"
                     class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer range-slider"
-                    max="10" min="0" step="0.5" type="range" value="0">
+                    max="10"
+                    min="0"
+                    step="0.5"
+                    type="range">
             </div>
 
             <div>
                 <span class="font-label-md text-label-md text-on-surface block mb-md">Sort By</span>
                 <select
+                    form="search-form"
+                    name="sortBy"
                     class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm text-body-md focus:outline-none focus:border-primary-container">
-                    <option selected="">Newest</option>
-                    <option>Rating</option>
+                    <option
+                        selected="@(filter.SortBy == "newest")"
+                        value="newest">
+                        Newest
+                    </option>
+                    <option
+                        selected="@(filter.SortBy == "rating")"
+                        value="rating">
+                        Rating
+                    </option>
+                    <option
+                        selected="@(filter.SortBy == "recent")"
+                        value="recent">
+                        Recently Added
+                    </option>
                 </select>
             </div>
         </div>
         <button
+            form="search-form"
+            type="submit"
             class="mt-xl w-full bg-secondary-container text-on-secondary-container py-md rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">
             Apply Filters
         </button>
@@ -56,21 +87,43 @@
 
     <main class="flex-1">
         <header class="mb-xl">
-            <h1 class="font-headline-lg text-headline-lg text-on-surface mb-md">Results for <span class="text-primary">'Sci-Fi'</span>
-            </h1>
+            @if (!string.IsNullOrEmpty(filter.Search))
+            {
+                <h1 class="font-headline-lg text-headline-lg text-on-surface mb-md">
+                    Results for <span class="text-primary">'@filter.Search'</span>
+                </h1>
+            }
+
             <div class="flex flex-wrap gap-sm items-center">
-                <div
-                    class="flex items-center gap-xs px-md py-1 bg-surface-variant border border-outline-variant rounded-full group cursor-pointer">
-                    <span class="font-label-sm text-label-sm text-on-surface">Genre: Sci-Fi</span>
-                    <span
-                        class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-error transition-colors">close</span>
-                </div>
-                <div
-                    class="flex items-center gap-xs px-md py-1 bg-surface-variant border border-outline-variant rounded-full group cursor-pointer">
-                    <span class="font-label-sm text-label-sm text-on-surface">Rating: 8.0+</span>
-                    <span
-                        class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-error transition-colors">close</span>
-                </div>
+                @foreach (int genreId in filter.Genres)
+                {
+                    <div
+                        class="flex items-center gap-xs px-md py-1 bg-surface-variant border border-outline-variant rounded-full group cursor-pointer">
+                        <span
+                            class="font-label-sm text-label-sm text-on-surface">Genre: @genres.First(g => g.Id == genreId).Name</span>
+                        <span
+                            class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-error transition-colors">close</span>
+                    </div>
+                }
+                @if (filter.Rating != 0)
+                {
+                    <div
+                        class="flex items-center gap-xs px-md py-1 bg-surface-variant border border-outline-variant rounded-full group cursor-pointer">
+                        <span class="font-label-sm text-label-sm text-on-surface">Rating: @filter.Rating.ToString("N1")+</span>
+                        <span
+                            class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-error transition-colors">close</span>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(filter.SortBy))
+                {
+                    <div
+                        class="flex items-center gap-xs px-md py-1 bg-surface-variant border border-outline-variant rounded-full group cursor-pointer">
+                        <span class="font-label-sm text-label-sm text-on-surface">Sort By: @filter.SortBy</span>
+                        <span
+                            class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-error transition-colors">close</span>
+                    </div>
+                }
+
                 <button class="font-label-sm text-label-sm text-primary hover:underline ml-md">Clear all</button>
             </div>
         </header>
@@ -101,14 +154,6 @@
                     </div>
                 </a>
             }
-        </div>
-
-        <div class="mt-xl flex justify-center">
-            <button
-                class="bg-surface-container border border-outline-variant text-on-surface px-xl py-md rounded-full font-label-md text-label-md hover:bg-surface-variant transition-colors flex items-center gap-sm">
-                Load More Results
-                <span class="material-symbols-outlined">expand_more</span>
-            </button>
         </div>
     </main>
 </div>

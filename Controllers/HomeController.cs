@@ -25,6 +25,11 @@ public class HomeController(MovieRepository repository, GenreRepository genreRep
             .Take(10)
             .ToList();
 
+        var newestMovies = repository.CreateQuery()
+            .OrderByDescending(m => m.ReleaseYear)
+            .Take(10)
+            .ToList();
+        
         var genres = genreRepository.CreateQuery()
             .OrderByDescending(g => g.Movies.Count)
             .ToList();
@@ -32,6 +37,7 @@ public class HomeController(MovieRepository repository, GenreRepository genreRep
         ViewBag.FeaturedMovies = featuredMovies;
         ViewBag.RecentlyAddedMovies = recentlyAddedMovies;
         ViewBag.TopRatedMovies = topRatedMovies;
+        ViewBag.NewestMovies = newestMovies;
         ViewBag.Genres = genres;
         return View();
     }
