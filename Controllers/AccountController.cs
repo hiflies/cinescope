@@ -9,4 +9,10 @@ public class AccountController : Controller
     {
         return View();
     }
+
+    [HttpGet("/create-account")]
+    public IActionResult CreateAccount()
+    {
+        return View();
+    }
 }

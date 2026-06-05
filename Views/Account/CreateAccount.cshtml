@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "CineScope - Sign In";
+    ViewData["Title"] = "CineScope - Join CineScope";
     Layout = "_LoginLayout";
 }
 
@@ -12,9 +12,8 @@
     <div class="relative z-10 w-full max-w-md px-margin-mobile">
         <div class="glass-card rounded-xl p-xl shadow-2xl transition-auth">
             <div class="flex flex-col items-center mb-xl">
-                <h1 class="font-headline-lg text-headline-lg mb-xs text-on-surface">Welcome Back</h1>
-                <p class="text-on-surface-variant font-body-md text-center">Enter your details to
-                    access your cinematic universe.</p>
+                <h1 class="font-headline-lg text-headline-lg mb-xs text-on-surface">Join CineScope</h1>
+                <p class="text-on-surface-variant font-body-md text-center">Create your account and start discovering amazing cinema.</p>
             </div>
             <form class="space-y-lg">
                 <div class="space-y-xs">
@@ -43,25 +42,31 @@
                     </div>
                 </div>
 
-                <div class="flex items-center gap-sm">
-                    <input
-                        class="w-4 h-4 rounded border-outline-variant bg-surface-container text-primary-container focus:ring-primary-container focus:ring-offset-background"
-                        type="checkbox"/>
-                    <label class="font-label-md text-on-surface-variant" for="remember">Keep me logged in</label>
+                <div class="space-y-xs">
+                    <label class="font-label-md text-on-surface-variant" for="confirm-password">Confirm Password</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">verified_user</span>
+                        <input
+                            class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors"
+                            name="confirm-password" placeholder="••••••••" type="password"/>                        
+                        <button class="password-toggle absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-on-surface"
+                                                                                                                            type="button">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+                        </button>
+                    </div>
                 </div>
 
                 <button
                     class="w-full bg-secondary-container text-on-secondary-container font-label-md py-md rounded-lg hover:brightness-110 active:scale-[0.98] transition-all flex justify-center items-center gap-sm"
                     type="submit">
-                    <span>Sign In</span>
+                    <span>Create Account</span>
                     <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
                 </button>
             </form>
 
             <div class="mt-xl text-center">
                 <p class="text-on-surface-variant font-body-md">
-                    Don't have an account?
-                    <a href="/create-account" class="text-primary font-bold hover:underline">Create Account</a>
+                    Already have an account? <a href="/login" class="text-primary font-bold hover:underline">Sign In</a>
                 </p>
             </div>
         </div>
