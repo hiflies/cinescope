@@ -2,11 +2,13 @@ using CineScope.Entities;
 using CineScope.Models;
 using CineScope.Services;
 using CineScope.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CineScope.Controllers;
 
+[Authorize(Roles = "admin")]
 public class AdminMovieController(MovieRepository repository, GenreRepository genreRepository, TmdbApiService tmdbApi)
     : Controller
 {
@@ -20,7 +22,7 @@ public class AdminMovieController(MovieRepository repository, GenreRepository ge
         var query = repository.CreateQuery();
         if (!string.IsNullOrEmpty(search))
         {
-            query = query.Where(g => EF.Functions.Like(g.Title, $"{search}%"));
+            query = query.Where(m => m.Title.Contains(search, StringComparison.CurrentCultureIgnoreCase));
         }
 
         var movies = await query
@@ -33,7 +35,7 @@ public class AdminMovieController(MovieRepository repository, GenreRepository ge
         int movieCount;
         if (!string.IsNullOrEmpty(search))
         {
-            movieCount = await repository.CreateQuery().CountAsync(m => EF.Functions.Like(m.Title, $"{search}%"));
+            movieCount = await repository.CreateQuery().CountAsync(m => m.Title.Contains(search, StringComparison.CurrentCultureIgnoreCase));
         }
         else
         {

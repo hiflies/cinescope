@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CineScope.Controllers;
 
+[Authorize(Roles = "admin")]
 public class AdminController : Controller
 {
     [HttpGet("/admin")]
