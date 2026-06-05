@@ -29,16 +29,4 @@ public class AdminController(MovieRepository repository, UserRepository userRepo
         ViewBag.RecentlyAddedMovies = recentlyAddedMovies;
         return View();
     }
-
-    [HttpGet("/admin/reviews")]
-    public IActionResult Reviews()
-    {
-        return View();
-    }
-
-    [HttpGet("/admin/users")]
-    public IActionResult Users()
-    {
-        return View();
-    }
 }

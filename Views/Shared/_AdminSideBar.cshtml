@@ -14,27 +14,15 @@
     <nav class="flex-1 space-y-xs">
         <a
             href="/admin"
-            class="@(currentController == "Admin" ? "bg-primary-container text-on-primary-container": "text-on-surface-variant hover:bg-surface-variant") flex items-center gap-md px-md py-sm rounded-lg font-label-md text-label-md transition-all duration-300">
+            class="@(currentController == "Admin" ? "bg-primary-container text-on-primary-container" : "text-on-surface-variant hover:bg-surface-variant") flex items-center gap-md px-md py-sm rounded-lg font-label-md text-label-md transition-all duration-300">
             <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
             <span>Overview</span>
         </a>
         <a
             href="/admin/movies"
-            class="@(currentController == "AdminMovie" ? "bg-primary-container text-on-primary-container": "text-on-surface-variant hover:bg-surface-variant") flex items-center gap-md px-md py-sm rounded-lg font-label-md text-label-md transition-all duration-300">
+            class="@(currentController == "AdminMovie" ? "bg-primary-container text-on-primary-container" : "text-on-surface-variant hover:bg-surface-variant") flex items-center gap-md px-md py-sm rounded-lg font-label-md text-label-md transition-all duration-300">
             <span class="material-symbols-outlined" data-icon="movie">movie</span>
             <span>Movie Library</span>
-        </a>
-        <a
-            href="/admin/users"
-            class="@(currentController == "AdminUser" ? "bg-primary-container text-on-primary-container": "text-on-surface-variant hover:bg-surface-variant") flex items-center gap-md px-md py-sm rounded-lg font-label-md text-label-md transition-all duration-300">
-            <span class="material-symbols-outlined" data-icon="gavel">gavel</span>
-            <span>User Moderation</span>
-        </a>
-        <a
-            href="/admin/reviews"
-            class="@(currentController == "AdminReview" ? "bg-primary-container text-on-primary-container": "text-on-surface-variant hover:bg-surface-variant") flex items-center gap-md px-md py-sm rounded-lg font-label-md text-label-md transition-all duration-300">
-            <span class="material-symbols-outlined" data-icon="gavel">comment</span>
-            <span>Review Moderation</span>
         </a>
     </nav>
     <div class="mt-auto pt-lg border-t border-surface-variant space-y-xs">
@@ -43,10 +31,14 @@
             <span class="material-symbols-outlined">add</span>
             Add New Movie
         </a>
-        <a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant rounded-lg font-label-md text-label-md transition-all"
-           href="#">
-            <span class="material-symbols-outlined" data-icon="logout">logout</span>
-            <span>Logout</span>
-        </a>
+
+        <form method="post" action="/logout" class="inline">
+            @Html.AntiForgeryToken()
+            <button
+                class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant rounded-lg font-label-md text-label-md transition-all">
+                <span class="material-symbols-outlined" data-icon="logout">logout</span>
+                <span>Logout</span>
+            </button>
+        </form>
     </div>
 </aside>

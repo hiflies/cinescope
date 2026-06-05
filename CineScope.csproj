@@ -19,4 +19,20 @@
       <Folder Include="wwwroot\lib\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Collection\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Profile\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Migrations\Seeds\GenreMovie.sql" />
+      <EmbeddedResource Include="Migrations\Seeds\GenreMovie.sql" />
+      <None Remove="Migrations\Seeds\Genres.sql" />
+      <EmbeddedResource Include="Migrations\Seeds\Genres.sql" />
+      <None Remove="Migrations\Seeds\Movies.sql" />
+      <EmbeddedResource Include="Migrations\Seeds\Movies.sql" />
+      <None Remove="Migrations\Seeds\Users.sql" />
+      <EmbeddedResource Include="Migrations\Seeds\Users.sql" />
+    </ItemGroup>
+
 </Project>

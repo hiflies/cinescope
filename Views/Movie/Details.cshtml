@@ -32,11 +32,13 @@
             <div class="flex flex-col gap-md">
                 <div class="grid grid-cols-2 gap-base">
                     <button
+                        onclick="alert('This feature is not available yet');"
                         class="bg-surface-container-high text-on-surface py-base rounded-lg border border-outline-variant flex items-center justify-center gap-xs hover:bg-surface-bright transition-colors">
                         <span class="material-symbols-outlined">add</span>
                         Watchlist
                     </button>
                     <button
+                        onclick="alert('This feature is not available yet');"
                         class="bg-surface-container-high text-on-surface py-base rounded-lg border border-outline-variant flex items-center justify-center gap-xs hover:bg-surface-bright transition-colors">
                         <span class="material-symbols-outlined">playlist_add</span>
                         Add to List
@@ -45,7 +47,8 @@
                 <div
                     class="flex items-center justify-between p-md bg-surface-container rounded-lg border border-outline-variant">
                     <span class="text-label-md">Rate this</span>
-                    <div class="flex gap-xs text-primary-container">
+                    <div class="flex gap-xs text-primary-container" 
+                         onclick="alert('This feature is not available yet');">
                         <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
                         <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
                         <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -86,86 +89,6 @@
                     <span class="text-body-md font-body-md text-on-surface-variant">@ViewBag.Actors</span>
                 </div>
             </div>
-
-            <div class="mt-xl">
-                <div class="flex gap-xl border-b border-surface-container-highest mb-lg">
-                    <div class="pb-md text-primary-container font-bold border-b-2 border-primary-container">Reviews
-                    </div>
-                </div>
-
-                <div class="flex flex-col gap-lg">
-                    <div
-                        class="bg-surface-container p-lg rounded-xl border border-surface-container-highest flex flex-col gap-md">
-                        <div class="flex justify-between items-start">
-                            <div class="flex items-center gap-md">
-                                <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
-                                    <img class="w-full h-full object-cover"
-                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF3dV0_5643ChqUyREX-5acyyx7T9-6knJVLhtng5Ct4zK75k51Z04Izj6bPdWP7n6H5irUwWrAlUBgQAsz9Jes0lSZKwWZhVHYBh_5GvrfqgaIyl7s1qvU6uqGVLvpk5-Ep5KBp51cVHyO9wcZrcl5glciUx8C3RdVr4G4I5vqkkbqiqLb493x50UpRSQfOZkdpPu6Uu3k1mrK9hURYmAhZyzf6Ey9REzTeaaGiuM5eRe8-B3FSe5iCoGxmL3I2ecegCzoSeyqPU"/>
-                                </div>
-                                <div>
-                                    <h4 class="font-label-md text-label-md">Alex Rivera</h4>
-                                    <span class="text-label-sm text-on-surface-variant">October 14, 2023</span>
-                                </div>
-                            </div>
-                            <div
-                                class="px-md py-xs bg-primary-container/10 border border-primary-container/20 rounded-lg text-primary-container font-bold text-label-md">
-                                9/10
-                            </div>
-                        </div>
-                        <p class="text-body-md text-on-surface-variant">
-                            Inception is a rare masterpiece that combines high-octane action with a deeply intellectual
-                            narrative. Nolan's direction is impeccable, guiding the audience through layers of dreams
-                            without ever losing the emotional core. The visual effects still hold up remarkably well.
-                            Truly a cinematic landmark.
-                        </p>
-                    </div>
-                    <div
-                        class="bg-surface-container p-lg rounded-xl border border-surface-container-highest flex flex-col gap-md">
-                        <div class="flex justify-between items-start">
-                            <div class="flex items-center gap-md">
-                                <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
-                                    <img alt="User Avatar" class="w-full h-full object-cover"
-                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9S33vD_kE_26p-E6B9E_E5H7m2jR_3qK4S_N5n-V-wL_8y-zX-F-Q_J8-X-L-J-X-L-J-X-L-J"/>
-                                </div>
-                                <div>
-                                    <h4 class="font-label-md text-label-md">Sarah Jenkins</h4>
-                                    <span class="text-label-sm text-on-surface-variant">October 12, 2023</span>
-                                </div>
-                            </div>
-                            <div
-                                class="px-md py-xs bg-primary-container/10 border border-primary-container/20 rounded-lg text-primary-container font-bold text-label-md">
-                                10/10
-                            </div>
-                        </div>
-                        <p class="text-body-md text-on-surface-variant">An absolute tour de force. The layering of
-                            reality and the practical effects are mind-blowing. Hans Zimmer's score is the perfect
-                            companion to this journey.</p>
-                    </div>
-                    <div
-                        class="bg-surface-container p-lg rounded-xl border border-surface-container-highest flex flex-col gap-md">
-                        <div class="flex justify-between items-start">
-                            <div class="flex items-center gap-md">
-                                <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
-                                    <img alt="User Avatar" class="w-full h-full object-cover"
-                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X_P_X"/>
-                                </div>
-                                <div>
-                                    <h4 class="font-label-md text-label-md">Michael Chen</h4>
-                                    <span class="text-label-sm text-on-surface-variant">October 10, 2023</span>
-                                </div>
-                            </div>
-                            <div
-                                class="px-md py-xs bg-primary-container/10 border border-primary-container/20 rounded-lg text-primary-container font-bold text-label-md">
-                                8/10
-                            </div>
-                        </div>
-                        <p class="text-body-md text-on-surface-variant">Complex, visually stunning, and ambitious. It
-                            requires multiple viewings to fully grasp everything, but that's part of the fun. A bit long
-                            in parts, but worth it.</p>
-                    </div>
-                </div>
-            </div>
-
             <div class="mt-xl">
                 <div class="flex items-center justify-between mb-lg">
                     <h3 class="font-headline-md text-headline-md">Similar Movies</h3>
