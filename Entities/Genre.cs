@@ -1,4 +1,4 @@
-namespace CineScope.Models;
+namespace CineScope.Entities;
 
 public class Genre
 {

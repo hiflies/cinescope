@@ -1,4 +1,5 @@
 using System.Text;
+using CineScope.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CineScope.Models;

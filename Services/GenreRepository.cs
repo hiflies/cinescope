@@ -1,3 +1,4 @@
+using CineScope.Entities;
 using CineScope.Models;
 
 namespace CineScope.Services;

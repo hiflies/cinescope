@@ -1,4 +1,6 @@
-namespace CineScope.Models;
+using CineScope.Models;
+
+namespace CineScope.Entities;
 
 public class Movie
 {
