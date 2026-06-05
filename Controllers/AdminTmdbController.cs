@@ -46,9 +46,11 @@ public class AdminTmdbController(MovieRepository repository, GenreRepository gen
         var allGenres = await genreRepository.CreateQuery().ToListAsync();
 
         TmdbModelTransformer.Load(movie, tmdbMovie);
-        List<Genre> newGenres;
-        movie.Genres =
-            TmdbModelTransformer.LoadGenres(tmdbMovie.Genres.Select(g => g.Name).ToList(), allGenres, out newGenres);
+        movie.Genres = TmdbModelTransformer.LoadGenres(
+            tmdbMovie.Genres.Select(g => g.Name).ToList(),
+            allGenres,
+            out var newGenres
+        );
         genreRepository.Add(newGenres);
 
         genreRepository.Save();

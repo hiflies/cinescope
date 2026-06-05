@@ -41,9 +41,9 @@
                 <td class="px-lg py-md text-on-surface-variant">@movie.VoteAverage.ToString("N1")</td>
                 <td class="px-lg py-md text-right">
                     <div class="flex justify-end gap-md">
-                        @if (existingMovies.ContainsKey(movie.Id))
+                        @if (existingMovies.TryGetValue(movie.Id, out var existingMovie))
                         {
-                            <a href="/admin/movies/@existingMovies[movie.Id].Id"
+                            <a href="/admin/movies/@existingMovie.Id"
                                class="text-on-surface-variant hover:text-primary-container transition-colors">
                                 <span class="material-symbols-outlined">edit</span>
                             </a>
