@@ -22,11 +22,11 @@ public class AdminMovieController(MovieRepository repository, GenreRepository ge
         var query = repository.CreateQuery();
         if (!string.IsNullOrEmpty(search))
         {
-            query = query.Where(m => m.Title.Contains(search, StringComparison.CurrentCultureIgnoreCase));
+            query = query.Where(m => m.Title.ToLower().Contains(search.ToLower()));
         }
 
         var movies = await query
-            .OrderBy(m => m.Id)
+            .OrderByDescending(m => m.Id)
             .Include(m => m.Genres)
             .Skip(skip)
             .Take(size)
@@ -35,7 +35,7 @@ public class AdminMovieController(MovieRepository repository, GenreRepository ge
         int movieCount;
         if (!string.IsNullOrEmpty(search))
         {
-            movieCount = await repository.CreateQuery().CountAsync(m => m.Title.Contains(search, StringComparison.CurrentCultureIgnoreCase));
+            movieCount = await repository.CreateQuery().CountAsync(m => m.Title.ToLower().Contains(search.ToLower()));
         }
         else
         {
@@ -105,7 +105,7 @@ public class AdminMovieController(MovieRepository repository, GenreRepository ge
         var movie = await repository.Get(id);
         if (movie == null) return NotFound();
 
-        ViewBag.MovieId = movie.Id;
+        ViewBag.TmdbId = movie.TmdbId;
         ViewBag.MovieTitle = movie.Title;
         ViewBag.Tagline = movie.Tagline;
         ViewBag.ReleaseYear = movie.ReleaseYear.ToString();
@@ -149,14 +149,21 @@ public class AdminMovieController(MovieRepository repository, GenreRepository ge
         return Redirect("/admin/movies");
     }
 
-    [HttpGet("/admin/movies/{id:int}/update")]
-    public async Task<IActionResult> UpdateFromTmdb(int id)
+    [HttpGet("/admin/movies/fetch-from-tmdb/{id:int}")]
+    public async Task<IActionResult> FetchFromTmdb(int id)
     {
-        var movie = await repository.Get(id);
-        if (movie == null) return NotFound();
-
-        var tmdbMovie = await tmdbApi.GetMovieById((int)movie.TmdbId!);
+        var tmdbMovie = await tmdbApi.GetMovieById(id);
         if (tmdbMovie == null) return NotFound();
+
+        var movie = await repository.GetByTmdbId(id);
+        if (movie == null)
+        {
+            movie = new Movie
+            {
+                TmdbId = id
+            };
+            repository.Add(movie);
+        }
 
         var allGenres = await genreRepository.CreateQuery().ToListAsync();
 
@@ -168,6 +175,6 @@ public class AdminMovieController(MovieRepository repository, GenreRepository ge
 
         genreRepository.Save();
         repository.Save();
-        return Redirect($"/admin/movies/{id}");
+        return Redirect($"/admin/movies");
     }
 }

@@ -31,4 +31,11 @@ public class MovieRepository(CineScopeDbContext context)
         context.Movies.Remove(movie);
         return context.SaveChangesAsync();
     }
+
+    public async Task<Movie?> GetByTmdbId(int id)
+    {
+        return await context.Movies
+            .Include(m => m.Genres)
+            .FirstOrDefaultAsync(m => m.TmdbId == id);
+    }
 }

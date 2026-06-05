@@ -4,6 +4,11 @@ namespace CineScope.Services;
 
 public class UserRepository(CineScopeDbContext context)
 {
+    public IQueryable<User> CreateQuery()
+    {
+        return context.Users;
+    }
+    
     public void Add(User user)
     {
         context.Users.Add(user);
