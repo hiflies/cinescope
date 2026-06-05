@@ -1,3 +1,6 @@
+@using System.Security.Claims
+@using System.Security.Cryptography
+@using System.Text
 @{
     var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
 }
@@ -27,10 +30,38 @@
                     placeholder="Search movies..." type="text"/>
             </div>
         </form>
-        <a
-            href="/login"
-            class="bg-secondary-container text-on-secondary-container px-xl py-base rounded-full font-label-md hover:opacity-90 transition-all">
-            Login
-        </a>
+
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <div
+                id="nav-login-bar"
+                class="flex items-center gap-xs bg-surface/80 backdrop-blur-md border-surface-container-highest rounded-full transition-all">
+                <partial name="_Avatar"/>
+
+                @if (User.IsInRole("admin"))
+                {
+                    <a href="/admin"
+                       title="Admin"
+                       class="h-[40px] p-base text-center vertical-middle rounded-full hover:bg-surface-variant text-on-surface transition-colors">
+                        <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    </a>
+                }
+
+                <form method="post" action="/logout" class="inline">
+                    @Html.AntiForgeryToken()
+                    <button
+                        class="h-[40px] p-base text-center vertical-middle rounded-full hover:bg-surface-variant text-on-surface transition-colors">
+                        <span class="material-symbols-outlined" data-icon="logout">logout</span>
+                    </button>
+                </form>
+            </div>
+        }
+        else
+        {
+            <a href="/login"
+               class="bg-secondary-container text-on-secondary-container px-xl py-base rounded-full font-label-md hover:opacity-90 transition-all">
+                Login
+            </a>
+        }
     </div>
 </nav>

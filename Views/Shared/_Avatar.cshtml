@@ -1,0 +1,10 @@
+@using System.Security.Claims
+@using System.Security.Cryptography
+@using System.Text
+@{
+    var hashedEmail = BitConverter.ToString(SHA256.HashData(Encoding.UTF8.GetBytes(User.FindFirst(ClaimTypes.Email)!.Value))).Replace("-", "").ToLower();
+}
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden">
+    <img title="@User.Identity!.Name" alt="@User.Identity.Name" class="w-full h-full object-cover"
+         src="https://gravatar.com/avatar/@hashedEmail"/>
+</div>

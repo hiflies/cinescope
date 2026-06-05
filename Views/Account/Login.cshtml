@@ -1,3 +1,4 @@
+@model CineScope.Models.LoginModel
 @{
     ViewData["Title"] = "CineScope - Sign In";
     Layout = "_LoginLayout";
@@ -17,12 +18,15 @@
                     access your cinematic universe.</p>
             </div>
             <form method="post" class="space-y-lg">
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="All" class="text-red-400 font-body-md mb-md"></div>
                 <div class="space-y-xs">
                     <label class="font-label-md text-on-surface-variant block" for="identifier">Email or
                         Username</label>
                     <div class="relative">
                         <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">alternate_email</span>
                         <input
+                            value="@Model.Identifier"
                             id="identifier"
                             class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors"
                             name="identifier" placeholder="name@@example.com" required="" type="text"/>
@@ -49,9 +53,13 @@
 
                 <div class="flex items-center gap-sm">
                     <input
+                        id="remember-me"
+                        name="remember-me"
+                        value="true"
+                        checked="@Model.RememberMe"
                         class="w-4 h-4 rounded border-outline-variant bg-surface-container text-primary-container focus:ring-primary-container focus:ring-offset-background"
                         type="checkbox"/>
-                    <label class="font-label-md text-on-surface-variant" for="remember">Keep me logged in</label>
+                    <label class="font-label-md text-on-surface-variant" for="remember-me">Keep me logged in</label>
                 </div>
 
                 <button

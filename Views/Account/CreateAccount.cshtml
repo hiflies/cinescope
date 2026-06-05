@@ -1,3 +1,4 @@
+@model CineScope.Models.CreateAccountModel
 @{
     ViewData["Title"] = "CineScope - Join CineScope";
     Layout = "_LoginLayout";
@@ -17,11 +18,14 @@
                     amazing cinema.</p>
             </div>
             <form method="post" class="space-y-lg">
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="All" class="text-red-400 font-body-md mb-md"></div>
                 <div class="space-y-xs">
                     <label class="font-label-md text-on-surface-variant block" for="email">Email</label>
                     <div class="relative">
                         <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">alternate_email</span>
                         <input
+                            value="@Model.Email"
                             id="email"
                             class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors"
                             name="email" placeholder="name@example.com" required="" type="text"/>
@@ -32,6 +36,7 @@
                     <div class="relative">
                         <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">account_circle</span>
                         <input
+                            value="@Model.Username"
                             id="username"
                             class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors"
                             name="username" placeholder="username" required="" type="text"/>
