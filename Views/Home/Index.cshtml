@@ -30,10 +30,10 @@
                     <a href="/movies/@movie.Id"
                        class="border-2 border-on-surface text-on-surface px-xl py-sm rounded-lg font-label-md hover:bg-on-surface hover:text-background transition-all">See
                         details</a>
-                    <button
+                    <a href="/movies/@movie.Id?addToWatchlist=true"
                         class="bg-secondary-container text-white px-xl py-sm rounded-lg font-label-md hover:brightness-110 transition-all flex items-center gap-xs">
                         <span class="material-symbols-outlined">add</span> Add to watchlist
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -43,7 +43,6 @@
 </header>
 
 <main class="relative z-30 pb-xl">
-
     <section
         class="relative z-40 pt-lg pb-[10px] px-margin-mobile md:px-margin-desktop border-b border-surface-container-highest bg-background/50 backdrop-blur-sm sticky top-[15px]">
         <div class="flex items-center justify-between mb-sm">
@@ -77,14 +76,6 @@
                             <span
                                 class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-[10px] font-bold">@movie.Rating.ToString("N1")</span>
                             </div>
-                            <div class="flex justify-between items-center">
-                            <span class="material-symbols-outlined text-white hover:text-error transition-colors"
-                                  onclick="heartPop(this)">favorite</span>
-                                <span
-                                    class="material-symbols-outlined text-white hover:text-primary-container">add_circle</span>
-                                <span
-                                    class="material-symbols-outlined text-white hover:text-primary-container">star</span>
-                            </div>
                         </div>
                     </div>
                     <p class="mt-base font-title-lg text-on-surface truncate group-hover:text-primary-container transition-colors">
@@ -114,14 +105,6 @@
                             <span
                                 class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-[10px] font-bold">@movie.Rating.ToString("N1")</span>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <span class="material-symbols-outlined text-white hover:text-error transition-colors"
-                                  onclick="heartPop(this)">favorite</span>
-                            <span
-                                class="material-symbols-outlined text-white hover:text-primary-container">add_circle</span>
-                            <span
-                                class="material-symbols-outlined text-white hover:text-primary-container">star</span>
-                        </div>
                     </div>
                 </div>
                 <p class="mt-base font-title-lg text-on-surface truncate group-hover:text-primary-container transition-colors">
@@ -150,14 +133,6 @@
                         <div class="absolute top-2 right-2 flex flex-col gap-xs">
                             <span
                                 class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-[10px] font-bold">@movie.Rating.ToString("N1")</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="material-symbols-outlined text-white hover:text-error transition-colors"
-                                  onclick="heartPop(this)">favorite</span>
-                            <span
-                                class="material-symbols-outlined text-white hover:text-primary-container">add_circle</span>
-                            <span
-                                class="material-symbols-outlined text-white hover:text-primary-container">star</span>
                         </div>
                     </div>
                 </div>
