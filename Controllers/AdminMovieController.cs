@@ -1,7 +1,5 @@
 using CineScope.Entities;
-using CineScope.Models;
 using CineScope.Services;
-using CineScope.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace CineScope.Controllers;
 
 [Authorize(Roles = "admin")]
-public class AdminMovieController(MovieRepository repository, GenreRepository genreRepository, TmdbApiService tmdbApi)
+public class AdminMovieController(MovieRepository repository, GenreRepository genreRepository)
     : Controller
 {
     [HttpGet("/admin/movies")]
@@ -147,34 +145,5 @@ public class AdminMovieController(MovieRepository repository, GenreRepository ge
 
         repository.Save();
         return Redirect("/admin/movies");
-    }
-
-    [HttpGet("/admin/movies/fetch-from-tmdb/{id:int}")]
-    public async Task<IActionResult> FetchFromTmdb(int id)
-    {
-        var tmdbMovie = await tmdbApi.GetMovieById(id);
-        if (tmdbMovie == null) return NotFound();
-
-        var movie = await repository.GetByTmdbId(id);
-        if (movie == null)
-        {
-            movie = new Movie
-            {
-                TmdbId = id
-            };
-            repository.Add(movie);
-        }
-
-        var allGenres = await genreRepository.CreateQuery().ToListAsync();
-
-        TmdbModelTransformer.Load(movie, tmdbMovie);
-        List<Genre> newGenres;
-        movie.Genres =
-            TmdbModelTransformer.LoadGenres(tmdbMovie.Genres.Select(g => g.Name).ToList(), allGenres, out newGenres);
-        genreRepository.Add(newGenres);
-
-        genreRepository.Save();
-        repository.Save();
-        return Redirect($"/admin/movies");
     }
 }

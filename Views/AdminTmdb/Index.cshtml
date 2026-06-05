@@ -1,0 +1,82 @@
+@using CineScope.Entities
+@{
+    ViewData["Title"] = "CineScope - Admin - Movies";
+    Layout = "_AdminLayout";
+    var movies = (List<TmdbMovieModel>)ViewBag.Movies;
+    var existingMovies = (Dictionary<int, Movie>)ViewBag.ExistingMovies;
+    string search = ViewBag.Search;
+}
+
+<div class="movie-management flex justify-between items-end">
+    <div>
+        <h2 class="font-headline-lg text-headline-lg text-on-surface">TMDB Search</h2>
+        <p class="text-body-md text-on-surface-variant">'@search'</p>
+    </div>
+</div>
+
+<div class="movie-management glass-card rounded-xl overflow-hidden">
+    <table class="w-full text-left border-collapse">
+        <thead>
+        <tr class="bg-surface-container border-b border-outline-variant text-label-md text-on-surface-variant">
+            <th class="p-lg">Poster</th>
+            <th class="p-lg">Title</th>
+            <th class="p-lg">Release Year</th>
+            <th class="p-lg">Rating</th>
+            <th class="p-lg text-right">Actions</th>
+        </tr>
+        </thead>
+        <tbody class="text-body-md text-on-surface">
+        @foreach (var movie in movies.Where(movie => !string.IsNullOrEmpty(movie.PosterPath)))
+        {
+            <tr class="movie-row border-b border-outline-variant transition-colors group">
+                <td class="px-lg py-md">
+                    <div
+                        class="w-12 h-16 rounded overflow-hidden border border-outline-variant group-hover:scale-110 transition-transform">
+                        <img class="w-full h-full object-cover"
+                             src="@($"https://www.themoviedb.org/t/p/w1280/{movie.PosterPath}")"/>
+                    </div>
+                </td>
+                <td class="px-lg py-md font-bold text-on-surface">@movie.Title</td>
+                <td class="px-lg py-md text-on-surface-variant">@movie.ReleaseDate</td>
+                <td class="px-lg py-md text-on-surface-variant">@movie.VoteAverage.ToString("N1")</td>
+                <td class="px-lg py-md text-right">
+                    <div class="flex justify-end gap-md">
+                        @if (existingMovies.ContainsKey(movie.Id))
+                        {
+                            <a href="/admin/movies/@existingMovies[movie.Id].Id"
+                               class="text-on-surface-variant hover:text-primary-container transition-colors">
+                                <span class="material-symbols-outlined">edit</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a
+                                href="/admin/tmdb/@movie.Id"
+                                onclick="return confirm('Are you sure you want to import this movie?')"
+                                class="text-primary-container hover:text-secondary-container transition-colors">
+                                <span class="material-symbols-outlined">download</span>
+                            </a>
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+@section NavBar{
+    <div class="relative w-full max-w-md">
+        <form method="get" action="/admin/tmdb">
+        <span
+            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+            <input
+                name="search"
+                value="@search"
+                type="text"
+                onkeydown="e=> e.key === 'Enter' && e.target.parent.submit()"
+                class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pl-10 pr-4 text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary-container transition-all"
+                placeholder="Search on tmdb...">
+        </form>
+    </div>
+}
