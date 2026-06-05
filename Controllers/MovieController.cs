@@ -36,6 +36,8 @@ public class MovieController(MovieRepository repository, GenreRepository genreRe
     {
         var movie = await repository.Get(id);
         if (movie == null) return NotFound();
+        
+        var similarMoviesFilter = CreateFilter(movie);
 
         ViewBag.Title = movie.Title;
         ViewBag.Tagline = movie.Tagline;
@@ -49,18 +51,30 @@ public class MovieController(MovieRepository repository, GenreRepository genreRe
         ViewBag.BackdropImageUrl = movie.BackdropImageUrl;
         ViewBag.Genres = string.Join(" • ", movie.Genres.Select(g => g.Name));
         ViewBag.Rating = movie.Rating.ToString("N1");
-        ViewBag.SimilarMovies = GetSimilarMovies(movie);
+        ViewBag.SimilarMovies = GetSimilarMovies(movie, similarMoviesFilter);
+        ViewBag.SimilarMoviesFilter = similarMoviesFilter;
 
         return View();
     }
 
-    private List<Movie> GetSimilarMovies(Movie movie)
+    private List<Movie> GetSimilarMovies(Movie movie, FilterModel filter)
     {
-        return repository.CreateQuery()
-            .Include(m => m.Genres)
-            .Where(m => m.Genres.Any(g => movie.Genres.Contains(g)))
+        IQueryable<Movie> query = repository.CreateQuery()
+            .Include(m => m.Genres);
+
+        query = filter.ApplyGenres(query);
+        
+        return query
             .Where(m => m != movie)
             .Take(4)
             .ToList();
+    }
+
+    private FilterModel CreateFilter(Movie movie)
+    {
+        return new FilterModel
+        {
+            Genres = movie.Genres.Select(g => g.Id).ToList()
+        };
     }
 }
