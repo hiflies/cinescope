@@ -16,13 +16,14 @@
                 <p class="text-on-surface-variant font-body-md text-center">Enter your details to
                     access your cinematic universe.</p>
             </div>
-            <form class="space-y-lg">
+            <form method="post" class="space-y-lg">
                 <div class="space-y-xs">
                     <label class="font-label-md text-on-surface-variant block" for="identifier">Email or
                         Username</label>
                     <div class="relative">
                         <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">alternate_email</span>
                         <input
+                            id="identifier"
                             class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors"
                             name="identifier" placeholder="name@@example.com" required="" type="text"/>
                     </div>
@@ -34,10 +35,13 @@
                     <div class="relative">
                         <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">lock</span>
                         <input
+                            id="password"
                             class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors"
                             name="password" placeholder="••••••••" required="" type="password"/>
-                        <button class="password-toggle absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-on-surface"
-                                type="button">
+                        <button
+                            tabindex="-1"
+                            class="password-toggle absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-on-surface"
+                            type="button">
                             <span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
                         </button>
                     </div>

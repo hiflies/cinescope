@@ -13,6 +13,7 @@ var appConfig = builder.Configuration.GetSection("App");
 builder.Services
     .AddScoped<MovieRepository, MovieRepository>()
     .AddScoped<GenreRepository, GenreRepository>()
+    .AddScoped<UserRepository, UserRepository>()
     .AddSingleton(new TmdbApiService(appConfig["TmdbApiKey"]!))
     ;
 

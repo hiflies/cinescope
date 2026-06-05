@@ -1,5 +1,4 @@
 using CineScope.Entities;
-using CineScope.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CineScope.Services;
@@ -8,4 +7,5 @@ public class CineScopeDbContext(DbContextOptions<CineScopeDbContext> options) : 
 {
     public DbSet<Genre> Genres => Set<Genre>();
     public DbSet<Movie> Movies => Set<Movie>();
+    public DbSet<User> Users => Set<User>();
 }

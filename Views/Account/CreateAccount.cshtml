@@ -13,17 +13,28 @@
         <div class="glass-card rounded-xl p-xl shadow-2xl transition-auth">
             <div class="flex flex-col items-center mb-xl">
                 <h1 class="font-headline-lg text-headline-lg mb-xs text-on-surface">Join CineScope</h1>
-                <p class="text-on-surface-variant font-body-md text-center">Create your account and start discovering amazing cinema.</p>
+                <p class="text-on-surface-variant font-body-md text-center">Create your account and start discovering
+                    amazing cinema.</p>
             </div>
-            <form class="space-y-lg">
+            <form method="post" class="space-y-lg">
                 <div class="space-y-xs">
-                    <label class="font-label-md text-on-surface-variant block" for="identifier">Email or
-                        Username</label>
+                    <label class="font-label-md text-on-surface-variant block" for="email">Email</label>
                     <div class="relative">
                         <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">alternate_email</span>
                         <input
+                            id="email"
                             class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors"
-                            name="identifier" placeholder="name@@example.com" required="" type="text"/>
+                            name="email" placeholder="name@example.com" required="" type="text"/>
+                    </div>
+                </div>
+                <div class="space-y-xs">
+                    <label class="font-label-md text-on-surface-variant block" for="username">Username</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">account_circle</span>
+                        <input
+                            id="username"
+                            class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors"
+                            name="username" placeholder="username" required="" type="text"/>
                     </div>
                 </div>
                 <div class="space-y-xs">
@@ -33,10 +44,13 @@
                     <div class="relative">
                         <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">lock</span>
                         <input
+                            id="password"
                             class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors"
                             name="password" placeholder="••••••••" required="" type="password"/>
-                        <button class="password-toggle absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-on-surface"
-                                type="button">
+                        <button
+                            tabindex="-1"
+                            class="password-toggle absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-on-surface"
+                            type="button">
                             <span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
                         </button>
                     </div>
@@ -47,10 +61,13 @@
                     <div class="relative">
                         <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">verified_user</span>
                         <input
+                            id="confirm-password"
                             class="w-full bg-surface-container border border-surface-variant rounded-lg py-sm pl-11 pr-md text-on-surface input-focus-gold transition-colors"
-                            name="confirm-password" placeholder="••••••••" type="password"/>                        
-                        <button class="password-toggle absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-on-surface"
-                                                                                                                            type="button">
+                            name="confirm-password" placeholder="••••••••" type="password"/>
+                        <button
+                            tabindex="-1"
+                            class="password-toggle absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-on-surface"
+                            type="button">
                             <span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
                         </button>
                     </div>
